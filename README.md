@@ -1,3 +1,3 @@
 # ton-env
 
-Ton Enviroment
+Ton Environment

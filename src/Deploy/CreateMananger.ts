@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 const { TONClient } = require('ton-client-node-js');
 import { Contract } from '../Contract/Contract';
 import { resolve, parse } from 'path'
