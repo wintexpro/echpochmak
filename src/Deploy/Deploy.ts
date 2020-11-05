@@ -22,7 +22,7 @@ export const Deploy = async (
 
   console.log(`Transaction id is ${result.transaction.id}`);
   console.log(`Deploy fees are  ${JSON.stringify(result.fees, null, 2)}`);
-  return result;
+  return deployMessage.address;
 };
 
 export const GiveGrams = async (client, address) => {

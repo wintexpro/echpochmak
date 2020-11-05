@@ -2,20 +2,20 @@
 const Manager = require('../build/main/Deploy/CreateManager').default;
 
 describe('Asserts', () => {
-  let mananger;
+  let manager;
   beforeEach(async () => {
-    mananger = new Manager();
-    await mananger.CreateClient(['http://localhost:8080/graphql']);
-    await mananger.createKeys();
-    mananger.loadContract(
+    manager = new Manager();
+    await manager.CreateClient(['http://localhost:8080/graphql']);
+    await manager.createKeys();
+    manager.loadContract(
       './tests/contract/InitParams.tvc',
       './tests/contract/InitParams.abi.json'
     );
   });
 
   it('test one', async () => {
-    console.log(mananger);
-    let addr = await mananger.contracts[0].value.DeployContract();
-    console.log(addr);
+    console.log(manager);
+    await manager.contracts[0].value.DeployContract();
+    console.log(manager.contracts[0].value.address);
   });
 });
