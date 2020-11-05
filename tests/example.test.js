@@ -39,11 +39,7 @@ describe('Asserts', () => {
     });
     console.log('AddDeposit 1000');
     manager.GiveToAddress(manager.contracts['9_PiggyBank'].address);
-    let res = await manager.contracts['9_PiggyBank'].RunContract(
-      'getData',
-      {},
-      null
-    );
+    let res = await manager.contracts['9_PiggyBank'].RunContract('getData', {});
     console.log(res);
   });
 });
