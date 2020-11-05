@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs'
+import { readFileSync } from 'fs';
 import { resolve } from 'path';
 import { Deploy } from '../Deploy/Deploy';
 
@@ -10,7 +10,13 @@ export class Contract {
   private client: any;
   private keys: any;
 
-  constructor(contractPath: string, abiPath: string, client, keys: any, noPath = false) {
+  constructor(
+    contractPath: string,
+    abiPath: string,
+    client,
+    keys: any,
+    noPath = false
+  ) {
     // read contract .tvc file
     let imageBase64 = '';
     if (!noPath) {
@@ -20,7 +26,7 @@ export class Contract {
     }
 
     const abi = readFileSync(resolve(abiPath));
-    this.contractPackage = { abi, imageBase64 }
+    this.contractPackage = { abi, imageBase64 };
     this.client = client;
     this.keys = keys;
   }
@@ -37,10 +43,15 @@ export class Contract {
       abi: this.contractPackage.abi,
       functionName,
       input,
-      keyPair
+      keyPair,
     });
-    const messageProcessingState = await this.client.contracts.sendMessage(runMessage.message);
-    const result = await this.client.contracts.waitForRunTransaction(runMessage, messageProcessingState);
+    const messageProcessingState = await this.client.contracts.sendMessage(
+      runMessage.message
+    );
+    const result = await this.client.contracts.waitForRunTransaction(
+      runMessage,
+      messageProcessingState
+    );
     return result;
   }
 }
