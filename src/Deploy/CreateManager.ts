@@ -1,10 +1,10 @@
 import { TONClient } from 'ton-client-node-js';
 import { Contract } from '../Contract/Contract';
 import { resolve, parse } from 'path';
-
+import { GiveGrams } from '../Deploy/Deploy';
 export default class Manager {
   public client: any;
-  public contracts = [];
+  public contracts = {};
   public keys: any;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
@@ -25,7 +25,9 @@ export default class Manager {
       public: _public,
     };
   }
-
+  public async GiveToAddress(address) {
+    await GiveGrams(this.client, address);
+  }
   public loadContract(contractPath: string, abiPath: string) {
     if (!this.keys) {
       throw new Error('Keys not created');
@@ -33,15 +35,12 @@ export default class Manager {
     if (!this.client) {
       throw new Error('Client not created');
     }
-    this.contracts.push({
-      key: parse(contractPath).base.split('.')[0],
-      value: new Contract(
-        resolve(contractPath),
-        resolve(abiPath),
-        this.client,
-        this.keys
-      ),
-    });
+    this.contracts[parse(contractPath).base.split('.')[0]] = new Contract(
+      resolve(contractPath),
+      resolve(abiPath),
+      this.client,
+      this.keys
+    );
   }
 
   public AddContractFromAddress(
@@ -64,7 +63,6 @@ export default class Manager {
     );
     contract.address = address;
     contract.isDeployed = true;
-    this.contracts.push({ key: contractName, value: contract });
+    this.contracts[contractName] = contract;
   }
 }
-

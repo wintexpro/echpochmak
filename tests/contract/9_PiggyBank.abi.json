@@ -1,0 +1,43 @@
+{
+	"ABI version": 2,
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"own","type":"address"},
+				{"name":"lim","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deposit",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdraw",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getData",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"own","type":"address"},
+				{"name":"lim","type":"uint256"},
+				{"name":"bal","type":"uint128"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}

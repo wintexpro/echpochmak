@@ -15,13 +15,11 @@ export const Deploy = async (
   const messageProcessingState = await client.contracts.sendMessage(
     deployMessage.message
   );
-  const result = await client.contracts.waitForDeployTransaction(
+  await client.contracts.waitForDeployTransaction(
     deployMessage,
     messageProcessingState
   );
 
-  console.log(`Transaction id is ${result.transaction.id}`);
-  console.log(`Deploy fees are  ${JSON.stringify(result.fees, null, 2)}`);
   return deployMessage.address;
 };
 
