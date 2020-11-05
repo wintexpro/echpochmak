@@ -47,20 +47,13 @@ export class Contract {
     if (!keyPair) {
       keyPair = this.keys;
     }
-    const runMessage = await this.client.contracts.createRunMessage({
+    const response = await this.client.contracts.run({
       address: this.address,
       abi: this.contractPackage.abi,
-      functionName,
-      input,
-      keyPair,
+      functionName: functionName,
+      input: input,
+      keyPair: keyPair, //there is no pubkey key check in the contract so we can leave it empty
     });
-    const messageProcessingState = await this.client.contracts.sendMessage(
-      runMessage.message
-    );
-    const result = await this.client.contracts.waitForRunTransaction(
-      runMessage,
-      messageProcessingState
-    );
-    return result;
+    return response.output;
   }
 }
