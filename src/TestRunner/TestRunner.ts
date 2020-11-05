@@ -1,9 +1,10 @@
 /* eslint-disable no-var */
 import { expect, assert } from 'chai';
-
+import Manager from '../Deploy/CreateManager';
 import Mocha from 'mocha';
 import { testConfig } from '../config/config';
 declare global {
+  var Manager;
   var expect;
   var assert;
 }
@@ -22,6 +23,7 @@ export const TestRun = async (config: testConfig) => {
 export const SetTestGlobal = () => {
   global.expect = expect;
   global.assert = assert;
+  global.Manager = Manager;
 };
 
 export const CreateMocha = (config: testConfig): Mocha => {
@@ -31,11 +33,11 @@ export const CreateMocha = (config: testConfig): Mocha => {
 
   // If the command line overrides color usage, use that.
   if (config.colors != null) {
-    mochaConfig.useColors = config.colors;
+    mochaConfig.color = config.colors;
   }
   // Default to true if configuration isn't set anywhere.
-  if (mochaConfig.useColors == null) {
-    mochaConfig.useColors = true;
+  if (mochaConfig.color == null) {
+    mochaConfig.color = true;
   }
   mochaConfig.timeout = config.timeout;
   const mocha = new Mocha(mochaConfig);

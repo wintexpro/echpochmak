@@ -25,18 +25,27 @@ export class Contract {
       imageBase64 = buff.toString('base64');
     }
 
-    const abi = readFileSync(resolve(abiPath));
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const abi = require(resolve(abiPath));
     this.contractPackage = { abi, imageBase64 };
     this.client = client;
     this.keys = keys;
   }
-  public async DeployContract() {
-    this.address = await Deploy(this.client, this, this.keys);
+  public async DeployContract(constructorParams = {}) {
+    this.address = await Deploy(
+      this.client,
+      this,
+      this.keys,
+      constructorParams
+    );
     this.isDeployed = true;
   }
-  public async RunContract(functionName, input, keyPair) {
+  public async RunContract(functionName, input, keyPair?) {
     if (!this.isDeployed) {
       throw new Error('Contract not deployed');
+    }
+    if (!keyPair) {
+      keyPair = this.keys;
     }
     const runMessage = await this.client.contracts.createRunMessage({
       address: this.address,

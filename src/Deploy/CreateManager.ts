@@ -2,11 +2,12 @@ import { TONClient } from 'ton-client-node-js';
 import { Contract } from '../Contract/Contract';
 import { resolve, parse } from 'path';
 
-export class Manager {
+export default class Manager {
   public client: any;
-  public contracts: [{ key: string; value: Contract }];
+  public contracts = [];
   public keys: any;
-
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  constructor() {}
   public async CreateClient(servers: string[] = ['net.ton.dev']) {
     this.client = await TONClient.create({
       servers,
@@ -66,3 +67,4 @@ export class Manager {
     this.contracts.push({ key: contractName, value: contract });
   }
 }
+

@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "description": "Ton Enviroment",
   "main": "build/main/index.js",
+  "type": "commonjs",
   "typings": "build/main/index.d.ts",
-  "module": "build/module/index.js",
   "repository": "https://github.com/YOUR_GITHUB_USER_NAME/ton-env",
   "license": "MIT",
   "keywords": [],
   "scripts": {
     "build": "run-p build:*",
     "build:main": "tsc -p tsconfig.json",
-    "build:module": "tsc -p tsconfig.module.json",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
+    "ton-env-test": "node --experimental-repl-await --require ts-node/register ./src/cli.ts test -p ./tests/*.test.js",
     "test": "run-s build test:*",
     "test:lint": "eslint src --ext .ts",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",
@@ -39,7 +39,7 @@
     "prepare-release": "run-s reset-hard test cov:check doc:html version doc:publish"
   },
   "bin": {
-    "ton-env": "."
+    "ton-env": "/build/main/cli.js"
   },
   "engines": {
     "node": ">=10"
@@ -54,6 +54,7 @@
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/mocha": "^8.0.3",
     "@types/yargs": "^15.0.9",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
