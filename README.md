@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://gitlab.wintex.pro/ton/environment">
-    <img src="https://i.imgur.com/PLFUcbp.jpg" alt="Logo" width="100" height="100">
+    <img src="https://i.imgur.com/PLFUcbp.jpg" alt="Logo" width="300" height="300">
   </a>
 
   <h3 align="center">Echpochmak</h3>
