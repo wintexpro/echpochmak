@@ -191,13 +191,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Project Link: [https://github.com/halva-suite/halva](https://github.com/halva-suite/halva)
-
 <a href="http://wintex.pro/" target="_blank">
   <img src="https://github.com/halva-suite/assets/blob/master/wintex.png?raw=true" width="200" />
 </a>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-
