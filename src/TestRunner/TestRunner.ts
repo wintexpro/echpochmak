@@ -3,6 +3,7 @@ import { expect, assert } from 'chai';
 import Manager from '../Deploy/CreateManager';
 import Mocha from 'mocha';
 import { testConfig } from '../config/config';
+import { exec } from 'shelljs';
 declare global {
   var Manager;
   var expect;
@@ -10,6 +11,7 @@ declare global {
 }
 
 export const TestRun = async (config: testConfig) => {
+  await tondevRestart();
   SetTestGlobal();
   const mocha = CreateMocha(config);
   config.testingFiles.forEach((file) => {
@@ -25,6 +27,21 @@ export const SetTestGlobal = () => {
   global.assert = assert;
   global.Manager = Manager;
 };
+
+export const tondevRestart = async () => {
+  await execAsync('tondev recreate && tondev start');
+  await new Promise((resolve) => setTimeout(resolve, 5000));
+};
+
+function execAsync(cmd, opts = {}) {
+  return new Promise(function (resolve, reject) {
+    // Execute the command, reject if we exit non-zero (i.e. error)
+    exec(cmd, opts, function (code, stdout, stderr) {
+      if (code != 0) return reject(new Error(stderr));
+      return resolve(stdout);
+    });
+  });
+}
 
 export const CreateMocha = (config: testConfig): Mocha => {
   const mochaConfig = config.mocha || {};

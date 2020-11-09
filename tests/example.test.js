@@ -43,23 +43,21 @@ describe('Asserts', () => {
   });
 
   it('test one', async () => {
+    let res2 = await manager.contracts['15_MessageReceiver'].RunContract(
+      'getCounter',
+      {}
+    );
+    console.log(res2);
     await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
       anotherContract: manager.contracts['15_MessageReceiver'].address,
     });
+    console.log(JSON.stringify(manager.contracts['15_MessageReceiver'].keys));
+    console.log(manager.contracts['15_MessageReceiver'].address);
     manager.GiveToAddress(manager.contracts['15_MessageReceiver'].address);
     let res = await manager.contracts['15_MessageReceiver'].RunContract(
       'getCounter',
       {}
     );
-
-    /*
-        await manager.contracts['9_PiggyBank_Owner'].RunContract('addToDeposit', {
-      bankAddress: manager.contracts['9_PiggyBank'].address,
-      amount: 100000,
-    });
-    console.log('AddDeposit 1000');
-    let res = await manager.contracts['9_PiggyBank'].RunContract('getData', {});
-     */
     console.log(res);
   });
 });

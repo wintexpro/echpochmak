@@ -33,7 +33,7 @@ export const GiveGrams = async (client, address) => {
     abi: giverAbi,
     input: {
       dest: address,
-      amount: 1000000000,
+      amount: 1000000000000000,
     },
     keyPair: null,
   });
