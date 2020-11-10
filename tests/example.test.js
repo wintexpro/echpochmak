@@ -59,6 +59,6 @@ describe('Asserts', () => {
       'getCounter',
       {}
     );
-    console.log(res);
+    assert.equal(res.c, '0x12', 'TEST MESSAGE');
   });
 });

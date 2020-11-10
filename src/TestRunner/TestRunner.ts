@@ -1,14 +1,8 @@
 /* eslint-disable no-var */
 import { expect, assert } from 'chai';
-import Manager from '../Deploy/CreateManager';
 import Mocha from 'mocha';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
-declare global {
-  var Manager;
-  var expect;
-  var assert;
-}
 
 export const TestRun = async (config: testConfig) => {
   await tondevRestart();
@@ -23,9 +17,8 @@ export const TestRun = async (config: testConfig) => {
 };
 
 export const SetTestGlobal = () => {
-  global.expect = expect;
-  global.assert = assert;
-  global.Manager = Manager;
+  globalThis.expect = expect;
+  globalThis.assert = assert;
 };
 
 export const tondevRestart = async () => {
