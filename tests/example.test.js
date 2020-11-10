@@ -51,6 +51,7 @@ describe('Asserts', () => {
     await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
       anotherContract: manager.contracts['15_MessageReceiver'].address,
     });
+    console.log(await manager.createKeysAndReturn());
     console.log(JSON.stringify(manager.contracts['15_MessageReceiver'].keys));
     console.log(manager.contracts['15_MessageReceiver'].address);
     manager.GiveToAddress(manager.contracts['15_MessageReceiver'].address);

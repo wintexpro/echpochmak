@@ -19,6 +19,10 @@ export default class Manager {
     this.keys = await this.client.crypto.ed25519Keypair();
   }
 
+  public async createKeysAndReturn() {
+    return await this.client.crypto.ed25519Keypair();
+  }
+
   public setKeys(secret: string, _public: string) {
     this.keys = {
       secret,
