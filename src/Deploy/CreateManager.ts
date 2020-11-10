@@ -50,7 +50,8 @@ export default class Manager {
   public AddContractFromAddress(
     address: string,
     abiPath: string,
-    contractName: string
+    contractName: string,
+    keyPair?
   ) {
     if (!this.keys) {
       throw new Error('Keys not created');
@@ -62,7 +63,7 @@ export default class Manager {
       null,
       resolve(abiPath),
       this.client,
-      this.keys,
+      keyPair || this.keys,
       true
     );
     contract.address = address;
