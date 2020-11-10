@@ -142,7 +142,12 @@ await manager.contracts['9_PiggyBank'].DeployContract({
 Add contract from address
 
 ```js
-manager.AddContractFromAddress('address', 'abiPath', 'contractName');
+manager.AddContractFromAddress(
+  'address',
+  'abiPath',
+  'contractName',
+  keyPair // HERE, the keys are indicated, if nothing is specified, those inside the contract object are used
+);
 ```
 
 Run contract
@@ -158,7 +163,7 @@ Run contract(no sign)
 ```js
 await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
   anotherContract: manager.contracts['15_MessageReceiver'].address,
-  null, // HERE, the keys are indicated, if nothing is specified, those inside the contra object are used (see below)
+  null, // HERE, the keys are indicated, if nothing is specified, those inside the contract object are used (see below)
 });
 ```
 
