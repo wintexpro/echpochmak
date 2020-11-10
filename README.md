@@ -85,7 +85,7 @@ Create client(default `['net.ton.dev']`)
 await manager.CreateClient(['http://localhost:8080/graphql']);
 ```
 
-Create Keys
+Create Keys for client
 
 ```js
 await manager.createKeys();
@@ -95,6 +95,12 @@ or SET Keys
 
 ```js
 await manager.setKeys('public', 'secret');
+```
+
+Generate keys
+
+```js
+let keys = await manager.createKeysAndReturn();
 ```
 
 Load contract
@@ -131,6 +137,12 @@ await manager.contracts['9_PiggyBank'].DeployContract({
   own: manager.contracts['9_PiggyBank_Owner'].address,
   lim: 1000000,
 });
+```
+
+Add contract from address
+
+```js
+manager.AddContractFromAddress('address', 'abiPath', 'contractName');
 ```
 
 Run contract
