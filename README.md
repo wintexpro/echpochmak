@@ -8,7 +8,7 @@
   <h3 align="center">Echpochmak</h3>
 
   <p align="center">
-    ⚠️ (Work In Progress)
+    ⚠️ (Work In Progress) node 12 ONLY!!
     <br />
     <a href="https://gitlab.wintex.pro/ton/environment/-/issues">Report Bug</a> |
     <a href="https://gitlab.wintex.pro/ton/environment/-/issues">Request Feature</a>
