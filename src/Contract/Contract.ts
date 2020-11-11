@@ -35,7 +35,7 @@ export class Contract {
     try {
       this.address = await Deploy(
         this.client,
-        this,
+        this.contractPackage,
         this.keys,
         constructorParams
       );

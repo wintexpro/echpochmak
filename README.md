@@ -184,9 +184,37 @@ manager.contracts['15_MessageSender'].contractPackage; //{ abi,imageBase64 }
 
 ---
 
-<!-- ROADMAP -->
+## [Wallet Contract](https://github.com/tonlabs/samples/blob/master/solidity/10_Wallet.sol)
+
+Create Wallet object()
+
+`The contract will be automatically deployed`
+
+```js
+let Wallet = await manager.createWallet();
+```
+
+or set keys
+
+```js
+let Wallet = await manager.createWallet(keys);
+```
+
+SendTransaction
+
+```js
+await Wallet.sendTransaction(
+  (dest: string),
+  (value: number),
+  (bounce: boolean)
+);
+```
+
+<!-- Wallet -->
 
 <!-- CONTRIBUTING -->
+
+---
 
 ## Contributing
 

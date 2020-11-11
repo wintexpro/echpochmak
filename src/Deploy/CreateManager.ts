@@ -2,6 +2,7 @@ import { TONClient } from 'ton-client-node-js';
 import { Contract } from '../Contract/Contract';
 import { resolve, parse } from 'path';
 import { GiveGrams } from '../Deploy/Deploy';
+import { Wallet } from '../Contract/Wallet';
 export default class Manager {
   public client: any;
   public contracts = {};
@@ -29,9 +30,11 @@ export default class Manager {
       public: _public,
     };
   }
+
   public async GiveToAddress(address) {
     await GiveGrams(this.client, address);
   }
+
   public loadContract(contractPath: string, abiPath: string) {
     if (!this.keys) {
       throw new Error('Keys not created');
@@ -45,6 +48,12 @@ export default class Manager {
       this.client,
       this.keys
     );
+  }
+
+  public createWallet(keys?) {
+    const wallet = new Wallet();
+    wallet.CreateWallet(this.client, keys || this.keys);
+    return wallet;
   }
 
   public AddContractFromAddress(

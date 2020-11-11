@@ -1,13 +1,12 @@
-import { Contract } from '../Contract/Contract';
 import { giverAbi, giverAddress } from '../Contract/GiverConst';
 export const Deploy = async (
   client,
-  contract: Contract,
+  contractPackage: any,
   keys,
   constructorParams: any
 ) => {
   const deployMessage = await client.contracts.createDeployMessage({
-    package: contract.contractPackage,
+    package: contractPackage,
     constructorParams: constructorParams,
     keyPair: keys,
   });

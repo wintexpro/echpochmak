@@ -40,22 +40,7 @@ describe('Asserts', () => {
   });
 
   it('test one', async () => {
-    let res2 = await manager.contracts['15_MessageReceiver'].RunContract(
-      'getCounter',
-      {}
-    );
-    console.log(res2);
-    await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
-      anotherContract: manager.contracts['15_MessageReceiver'].address,
-    });
-    console.log(await manager.createKeysAndReturn());
-    console.log(JSON.stringify(manager.contracts['15_MessageReceiver'].keys));
-    console.log(manager.contracts['15_MessageReceiver'].address);
-    manager.GiveToAddress(manager.contracts['15_MessageReceiver'].address);
-    let res = await manager.contracts['15_MessageReceiver'].RunContract(
-      'getCounter',
-      {}
-    );
-    assert.equal(res.c, '0x12', 'TEST MESSAGE');
+    let Wallet = await manager.createWallet();
+    manager.GiveToAddress(Wallet.address);
   });
 });
