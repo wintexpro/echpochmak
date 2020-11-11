@@ -6,7 +6,6 @@ import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
 
 export const TestRun = async (config: testConfig) => {
-  await tondevRestart();
   SetTestGlobal();
   const mocha = CreateMocha(config);
   config.testingFiles.forEach((file) => {
