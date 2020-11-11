@@ -66,6 +66,14 @@ ton-env --help
 
 ## Write test
 
+Restart tondev command
+
+```js
+beforeEach(async () => {
+  await restart(); //Recreate and start containers
+});
+```
+
 The manager is in the global scope
 
 ```js
