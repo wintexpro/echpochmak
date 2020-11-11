@@ -25,7 +25,7 @@ export const SetTestGlobal = () => {
 
 export const tondevRestart = async () => {
   await execAsync('tondev recreate && tondev start');
-  await new Promise((resolve) => setTimeout(resolve, 5000));
+  await new Promise((resolve) => setTimeout(resolve, 8000));
 };
 
 function execAsync(cmd, opts = {}) {
