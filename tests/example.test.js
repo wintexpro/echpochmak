@@ -1,6 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const Manager = require('../build/main/Deploy/CreateManager').default;
-
 describe('Asserts', () => {
   let manager;
   beforeEach(async () => {

@@ -8,7 +8,7 @@
   <h3 align="center">Echpochmak</h3>
 
   <p align="center">
-    ⚠️ (Work In Progress) node 12 ONLY!!
+    ⚠️ (Work In Progress)
     <br />
     <a href="https://gitlab.wintex.pro/ton/environment/-/issues">Report Bug</a> |
     <a href="https://gitlab.wintex.pro/ton/environment/-/issues">Request Feature</a>
@@ -25,7 +25,7 @@
 
 ## Getting Started
 
-1. Install `this`
+1. Install `Echpochmak`
 
 ```sh
 npm install -g ./path
@@ -47,14 +47,14 @@ ton-env test -p ./tests/example.test.js
 
 #### Options
 
-| Option              | Description                 |
-| ------------------- | --------------------------- |
-| -p, --path          | Path to test folder         |
-| -b, --bail          | Enable bail                 |
-| -v, --verbose       | Wite debug info(No working) |
-| -t, --timeout       | Timeout time for test       |
-| --version (boolean) | Show version                |
-| --help (boolean)    | Show help information       |
+| Option              | Description                 | Default |
+| ------------------- | --------------------------- | ------- |
+| -p, --path          | Path to test folder         |         |
+| -b, --bail          | Enable bail                 | false   |
+| -v, --verbose       | Wite debug info(No working) | false   |
+| -t, --timeout       | Timeout time for test       | 0       |
+| --version (boolean) | Show version                |         |
+| --help (boolean)    | Show help information       |         |
 
 If you need help, use
 
@@ -66,10 +66,10 @@ ton-env --help
 
 ## Write test
 
-Import Manager class from module
+The manager is in the global scope
 
 ```js
-const Manager = require('../build/main/Deploy/CreateManager').default;
+const manager = new Manager();
 ```
 
 Create new Manager object

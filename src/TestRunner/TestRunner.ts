@@ -1,6 +1,7 @@
 /* eslint-disable no-var */
 import { expect, assert } from 'chai';
 import Mocha from 'mocha';
+import _Manager from '../Deploy/CreateManager';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
 
@@ -19,6 +20,7 @@ export const TestRun = async (config: testConfig) => {
 export const SetTestGlobal = () => {
   globalThis.expect = expect;
   globalThis.assert = assert;
+  globalThis.Manager = _Manager;
 };
 
 export const tondevRestart = async () => {
