@@ -21,6 +21,7 @@ export const SetTestGlobal = () => {
   globalThis.expect = expect;
   globalThis.assert = assert;
   globalThis.Manager = _Manager;
+  globalThis.restart = tondevRestart;
 };
 
 export const tondevRestart = async () => {
