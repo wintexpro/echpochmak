@@ -18,7 +18,6 @@ export const Deploy = async (
     deployMessage,
     messageProcessingState
   );
-
   return deployMessage.address;
 };
 

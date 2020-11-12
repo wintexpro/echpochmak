@@ -18,6 +18,7 @@
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
     "fix:lint": "eslint src --ext .ts --fix",
     "ton-env-test": "node --experimental-repl-await --require ts-node/register ./src/cli.ts test -p ./tests/*.test.js",
+    "ton-env-test-build": "ton-env test -p ./tests/example.test.js ",
     "test": "run-s build test:*",
     "test:lint": "eslint src --ext .ts",
     "test:prettier": "prettier \"src/**/*.ts\" --list-different",

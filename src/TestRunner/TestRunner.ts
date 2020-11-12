@@ -35,8 +35,7 @@ export const tondevRestart = async (port = 80) => {
           servers: serv,
           log_verbose: globalThis.verbose,
         });
-        const ver = await client.queries.serverInfo.version;
-        console.log(ver);
+        await client.queries.serverInfo.version;
         break;
       } catch (error) {
         console.log(error);

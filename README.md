@@ -212,8 +212,6 @@ manager.contracts['15_MessageSender'].contractPackage; //{ abi,imageBase64 }
 
 Create Wallet object()
 
-`The contract will be automatically deployed`
-
 ```js
 let wallet = await manager.createWallet();
 ```
@@ -222,6 +220,12 @@ or set keys
 
 ```js
 let wallet = await manager.createWallet(keys);
+```
+
+Deploy wallet
+
+```js
+let wallet = await manager.Deploy();
 ```
 
 SendTransaction

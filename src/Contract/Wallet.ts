@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { resolve } from 'path';
+import { join } from 'path';
 import { Deploy } from '../Deploy/Deploy';
 export class Wallet {
   public address: string;
@@ -9,7 +9,7 @@ export class Wallet {
   private client: any;
   private keys: any;
 
-  private async DeployContract() {
+  public async Deploy() {
     try {
       this.address = await Deploy(
         this.client,
@@ -48,15 +48,19 @@ export class Wallet {
     }
     // read contract .tvc file
     let imageBase64 = '';
-    const buff = readFileSync(resolve('../../WalletContract/10_Wallet.tvc'));
+    const buff = readFileSync(
+      join(__dirname, '../WalletContract/10_Wallet.tvc')
+    );
     // convert tvc code into base64
     imageBase64 = buff.toString('base64');
 
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const abi = require(resolve('../../WalletContract/10_Wallet.abi.json'));
+    const abi = require(join(
+      __dirname,
+      '../WalletContract/10_Wallet.abi.json'
+    ));
     this.contractPackage = { abi, imageBase64 };
     this.client = client;
     this.keys = keys;
-    await this.DeployContract();
   }
 }

@@ -18,8 +18,7 @@ export default class Manager {
             servers,
             log_verbose: globalThis.verbose,
           });
-          const ver = await client.queries.serverInfo.version;
-          console.log('cl ' + ver);
+          await client.queries.serverInfo.version;
           resolve(client);
           break;
         } catch (error) {
@@ -96,7 +95,7 @@ export default class Manager {
     );
   }
 
-  public createWallet(keys?) {
+  public createWallet(keys?): Wallet {
     const wallet = new Wallet();
     wallet.CreateWallet(this.client, keys || this.keys);
     return wallet;
