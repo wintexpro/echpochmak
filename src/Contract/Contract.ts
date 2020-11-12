@@ -31,11 +31,11 @@ export class Contract {
     this.client = client;
     this.keys = keys;
   }
-  public async DeployContract(constructorParams = {}) {
+  public async DeployContract(constructorParams = {}, keys?) {
     this.address = await Deploy(
       this.client,
       this.contractPackage,
-      this.keys,
+      keys || this.keys,
       constructorParams
     );
     this.isDeployed = true;
