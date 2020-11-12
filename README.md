@@ -127,9 +127,11 @@ manager.loadContract(
       './tests/contract/15_MessageReceiver.tvc', // tvc
       './tests/contract/15_MessageReceiver.abi.json'  // abi
     );
+    // Custom name
     manager.loadContract(
       './tests/contract/15_MessageSender.tvc',
-      './tests/contract/15_MessageSender.abi.json'
+      './tests/contract/15_MessageSender.abi.json',
+      'Sender' // Name
     );
 ```
 
@@ -153,6 +155,12 @@ await manager.contracts['9_PiggyBank'].DeployContract({
   own: manager.contracts['9_PiggyBank_Owner'].address,
   lim: 1000000,
 });
+```
+
+Or use custom keys
+
+```js
+await manager.contracts['9_PiggyBank'].DeployContract({}, keys);
 ```
 
 Add contract from address
