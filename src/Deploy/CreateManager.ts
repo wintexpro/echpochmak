@@ -10,15 +10,54 @@ export default class Manager {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
   public async CreateClient(servers: string[] = ['net.ton.dev']) {
-    this.client = await TONClient.create({
-      servers,
-      log_verbose: globalThis.verbose,
-      // other configuration parameters, read below
+    this.client = await new Promise(async function (resolve) {
+      while (true) {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        try {
+          const client = await TONClient.create({
+            servers,
+            log_verbose: globalThis.verbose,
+          });
+          const ver = await client.queries.serverInfo.version;
+          console.log('cl ' + ver);
+          resolve(client);
+          break;
+        } catch (error) {
+          console.log(error);
+        }
+      }
     });
+    while (true) {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const block = await this.findLastBlock(0, this.client, 'id');
+      if (block) {
+        break;
+      }
+    }
   }
 
   public async createKeys() {
     this.keys = await this.client.crypto.ed25519Keypair();
+  }
+
+  public async findLastBlock(
+    chain: number,
+    client,
+    result: string,
+    additionalFilter?: any
+  ): Promise<any> {
+    const blocks = await client.queries.blocks.query({
+      filter: { workchain_id: { eq: chain }, ...(additionalFilter || {}) },
+      result,
+      orderBy: [
+        {
+          path: 'seq_no',
+          direction: 'DESC',
+        },
+      ],
+      limit: 1,
+    });
+    return blocks.length > 0 ? blocks[0] : null;
   }
 
   public async createKeysAndReturn() {

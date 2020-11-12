@@ -1,7 +1,7 @@
 describe('Asserts', () => {
   let manager;
   beforeEach(async () => {
-    await restart();
+    await restart(8080);
     manager = new Manager();
     await manager.CreateClient(['http://localhost:8080/graphql']);
     await manager.createKeys();

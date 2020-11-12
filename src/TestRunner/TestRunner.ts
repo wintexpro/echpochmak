@@ -1,6 +1,6 @@
 /* eslint-disable no-var */
 import { expect, assert } from 'chai';
-// import { TONClient } from 'ton-client-node-js';
+import { TONClient } from 'ton-client-node-js';
 import Mocha from 'mocha';
 import _Manager from '../Deploy/CreateManager';
 import { testConfig } from '../config/config';
@@ -24,24 +24,25 @@ export const SetTestGlobal = (config: testConfig) => {
   globalThis.restart = tondevRestart;
 };
 
-export const tondevRestart = async () => {
+export const tondevRestart = async (port) => {
   await execAsync('tondev recreate && tondev start');
   await new Promise(async function (resolve) {
     while (true) {
-      //   const serv = [`http://localhost:${port}/graphql/graphql?query={info{version}}`, ];
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const serv = [`http://localhost:${port}/graphql`];
       try {
-        /*const client = await TONClient.create({
+        const client = await TONClient.create({
           servers: serv,
           log_verbose: globalThis.verbose,
         });
         const ver = await client.queries.serverInfo.version;
-        console.log(ver);*/
+        console.log(ver);
+        break;
       } catch (error) {
         console.log(error);
       }
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-      resolve();
     }
+    resolve();
   });
 };
 
