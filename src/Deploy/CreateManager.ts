@@ -75,14 +75,20 @@ export default class Manager {
     await GiveGrams(this.client, address);
   }
 
-  public loadContract(contractPath: string, abiPath: string) {
+  public loadContract(
+    contractPath: string,
+    abiPath: string,
+    contractName?: string
+  ) {
     if (!this.keys) {
       throw new Error('Keys not created');
     }
     if (!this.client) {
       throw new Error('Client not created');
     }
-    this.contracts[parse(contractPath).base.split('.')[0]] = new Contract(
+    this.contracts[
+      contractName || parse(contractPath).base.split('.')[0]
+    ] = new Contract(
       resolve(contractPath),
       resolve(abiPath),
       this.client,
