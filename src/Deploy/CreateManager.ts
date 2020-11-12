@@ -12,6 +12,7 @@ export default class Manager {
   public async CreateClient(servers: string[] = ['net.ton.dev']) {
     this.client = await TONClient.create({
       servers,
+      log_verbose: globalThis.verbose,
       // other configuration parameters, read below
     });
   }

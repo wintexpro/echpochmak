@@ -1,6 +1,7 @@
 describe('Asserts', () => {
   let manager;
   beforeEach(async () => {
+    await restart();
     manager = new Manager();
     await manager.CreateClient(['http://localhost:8080/graphql']);
     await manager.createKeys();
@@ -40,6 +41,16 @@ describe('Asserts', () => {
   });
 
   it('test one', async () => {
+    let Wallet = await manager.createWallet();
+    manager.GiveToAddress(Wallet.address);
+  });
+
+  it('test two', async () => {
+    let Wallet = await manager.createWallet();
+    manager.GiveToAddress(Wallet.address);
+  });
+
+  it('test three', async () => {
     let Wallet = await manager.createWallet();
     manager.GiveToAddress(Wallet.address);
   });

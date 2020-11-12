@@ -32,18 +32,13 @@ export class Contract {
     this.keys = keys;
   }
   public async DeployContract(constructorParams = {}) {
-    try {
-      this.address = await Deploy(
-        this.client,
-        this.contractPackage,
-        this.keys,
-        constructorParams
-      );
-      this.isDeployed = true;
-    } catch (err) {
-      console.log(err);
-      throw new Error('Terminated with error');
-    }
+    this.address = await Deploy(
+      this.client,
+      this.contractPackage,
+      this.keys,
+      constructorParams
+    );
+    this.isDeployed = true;
   }
   public async RunContract(functionName, input, keyPair?) {
     if (!this.isDeployed) {
@@ -52,18 +47,13 @@ export class Contract {
     if (!keyPair) {
       keyPair = this.keys;
     }
-    try {
-      const response = await this.client.contracts.run({
-        address: this.address,
-        abi: this.contractPackage.abi,
-        functionName: functionName,
-        input: input,
-        keyPair: keyPair, //there is no pubkey key check in the contract so we can leave it empty
-      });
-      return response.output;
-    } catch (err) {
-      console.log(err);
-      throw new Error('Terminated with error');
-    }
+    const response = await this.client.contracts.run({
+      address: this.address,
+      abi: this.contractPackage.abi,
+      functionName: functionName,
+      input: input,
+      keyPair: keyPair, //there is no pubkey key check in the contract so we can leave it empty
+    });
+    return response.output;
   }
 }
