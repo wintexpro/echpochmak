@@ -74,6 +74,14 @@ beforeEach(async () => {
 });
 ```
 
+Or set port
+
+```js
+beforeEach(async () => {
+  await restart(8080); //Default 80
+});
+```
+
 The manager is in the global scope
 
 ```js

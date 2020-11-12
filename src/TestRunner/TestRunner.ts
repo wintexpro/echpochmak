@@ -24,7 +24,7 @@ export const SetTestGlobal = (config: testConfig) => {
   globalThis.restart = tondevRestart;
 };
 
-export const tondevRestart = async (port) => {
+export const tondevRestart = async (port = 80) => {
   await execAsync('tondev recreate && tondev start');
   await new Promise(async function (resolve) {
     while (true) {
