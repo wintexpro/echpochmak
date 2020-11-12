@@ -215,13 +215,13 @@ Create Wallet object()
 `The contract will be automatically deployed`
 
 ```js
-let Wallet = await manager.createWallet();
+let wallet = await manager.createWallet();
 ```
 
 or set keys
 
 ```js
-let Wallet = await manager.createWallet(keys);
+let wallet = await manager.createWallet(keys);
 ```
 
 SendTransaction
@@ -232,6 +232,15 @@ await Wallet.sendTransaction(
   (value: number),
   (bounce: boolean)
 );
+```
+
+Wallet fields
+
+```js
+wallet.address; // wallet address
+wallet.contractPath; // wallet path
+wallet.isDeployed; // boolean
+wallet.contractPackage; //{ abi,imageBase64 }
 ```
 
 <!-- Wallet -->
