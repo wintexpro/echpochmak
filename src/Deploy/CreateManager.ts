@@ -101,7 +101,7 @@ export default class Manager {
     return wallet;
   }
 
-  public AddContractFromAddress(
+  public async AddContractFromAddress(
     address: string,
     abiPath: string,
     contractName: string,
@@ -121,7 +121,19 @@ export default class Manager {
       true
     );
     contract.address = address;
-    contract.isDeployed = true;
+    let _contract;
+    try {
+      _contract = await this.client.queries.accounts.query(
+        {
+          id: { eq: address },
+        },
+        'id'
+      );
+    } catch (error) {
+      console.log(error);
+    }
+
+    contract.isDeployed = _contract.length > 0 ? true : false;
     this.contracts[contractName] = contract;
   }
 }

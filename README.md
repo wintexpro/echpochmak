@@ -165,7 +165,7 @@ await manager.contracts['9_PiggyBank'].DeployContract({}, keys);
 Add contract from address
 
 ```js
-manager.AddContractFromAddress(
+await manager.AddContractFromAddress(
   'address',
   'abiPath',
   'contractName',
