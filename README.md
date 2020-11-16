@@ -123,16 +123,15 @@ Load contract
 
 ```js
 manager.loadContract(
-    manager.loadContract(
-      './tests/contract/15_MessageReceiver.tvc', // tvc
-      './tests/contract/15_MessageReceiver.abi.json'  // abi
-    );
-    // Custom name
-    manager.loadContract(
-      './tests/contract/15_MessageSender.tvc',
-      './tests/contract/15_MessageSender.abi.json',
-      'Sender' // Name
-    );
+  './tests/contract/15_MessageReceiver.tvc', // tvc
+  './tests/contract/15_MessageReceiver.abi.json' // abi
+);
+// Custom name
+manager.loadContract(
+  './tests/contract/15_MessageSender.tvc',
+  './tests/contract/15_MessageSender.abi.json',
+  'Sender' // Name
+);
 ```
 
 Referring to the contract
@@ -185,10 +184,13 @@ await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
 Run contract(no sign)
 
 ```js
-await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
-  anotherContract: manager.contracts['15_MessageReceiver'].address,
-  null, // HERE, the keys are indicated, if nothing is specified, those inside the contract object are used (see below)
-});
+await manager.contracts['15_MessageSender'].RunContract(
+  'sendMessage',
+  {
+    anotherContract: manager.contracts['15_MessageReceiver'].address,
+  },
+  null // HERE, the keys are indicated, if nothing is specified, those inside the contract object are used (see below));
+);
 ```
 
 Use Giver

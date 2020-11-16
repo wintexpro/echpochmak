@@ -9,12 +9,12 @@ export class Wallet {
   private client: any;
   private keys: any;
 
-  public async Deploy() {
+  public async Deploy(keys?) {
     try {
       this.address = await Deploy(
         this.client,
         this.contractPackage,
-        this.keys,
+        keys || this.keys,
         {}
       );
       this.isDeployed = true;
