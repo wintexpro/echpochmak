@@ -4,7 +4,7 @@ export const Deploy = async (
   contractPackage: any,
   keys,
   constructorParams: any,
-  giveGrams = false
+  giveGrams = true
 ) => {
   const deployMessage = await client.contracts.createDeployMessage({
     package: contractPackage,

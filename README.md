@@ -156,7 +156,7 @@ manager.contracts['Contract_name']; // Taken from the name of the tvc file witho
 
 Signature
 
-`async DeployContract(constructorParams = {}, keys?)`
+`async DeployContract(constructorParams = {}, giveGram = true, keys?)`
 
 ```js
 await manager.contracts['15_MessageReceiver'].DeployContract();
