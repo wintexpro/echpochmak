@@ -95,7 +95,7 @@ export default class Manager {
     );
   }
 
-  public createWallet(keys?): Wallet {
+  public async createWallet(keys?): Promise<Wallet> {
     const wallet = new Wallet();
     wallet.CreateWallet(this.client, keys || this.keys);
     return wallet;

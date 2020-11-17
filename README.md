@@ -97,6 +97,10 @@ beforeEach(async () => {
 
 Create client(default `['net.ton.dev']`)
 
+Signature
+
+`async CreateClient(servers: string[] = ['net.ton.dev'])`
+
 ```js
 await manager.CreateClient(['http://localhost:8080/graphql']);
 ```
@@ -109,6 +113,10 @@ await manager.createKeys();
 
 or SET Keys
 
+Signature
+
+`setKeys(secret: string, _public: string)`
+
 ```js
 await manager.setKeys('public', 'secret');
 ```
@@ -120,6 +128,10 @@ let keys = await manager.createKeysAndReturn();
 ```
 
 Load contract
+
+Signature
+
+`public loadContract( contractPath: string, abiPath: string, contractName?: string ) `
 
 ```js
 manager.loadContract(
@@ -141,6 +153,10 @@ manager.contracts['Contract_name']; // Taken from the name of the tvc file witho
 ```
 
 Deploy contract
+
+Signature
+
+`async DeployContract(constructorParams = {}, keys?)`
 
 ```js
 await manager.contracts['15_MessageReceiver'].DeployContract();
@@ -164,6 +180,10 @@ await manager.contracts['9_PiggyBank'].DeployContract({}, keys);
 
 Add contract from address
 
+Signature
+
+`async AddContractFromAddress( address: string, abiPath: string, contractName: string, keyPair? )`
+
 ```js
 await manager.AddContractFromAddress(
   'address',
@@ -174,6 +194,10 @@ await manager.AddContractFromAddress(
 ```
 
 Run contract
+
+Signature
+
+`async RunContract(functionName, input, keyPair?) `
 
 ```js
 await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
@@ -195,6 +219,10 @@ await manager.contracts['15_MessageSender'].RunContract(
 
 Use Giver
 
+Signature
+
+`async GiveToAddress(address, amount?: number) `
+
 ```js
 manager.GiveToAddress(manager.contracts['15_MessageReceiver'].address); // give 1000000000000000 gram
 ```
@@ -214,6 +242,10 @@ manager.contracts['15_MessageSender'].contractPackage; //{ abi,imageBase64 }
 
 Create Wallet object()
 
+Signature
+
+`async createWallet(keys?)`
+
 ```js
 let wallet = await manager.createWallet();
 ```
@@ -231,6 +263,9 @@ await wallet.Deploy();
 ```
 
 SendTransaction
+Signature
+
+`async sendTransaction(dest: string, value: number, bounce: boolean)`
 
 ```js
 await Wallet.sendTransaction(
