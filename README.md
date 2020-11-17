@@ -66,7 +66,7 @@ ton-env --help
 
 ## Write test
 
-Restart tondev command
+### Restart tondev command
 
 ```js
 beforeEach(async () => {
@@ -74,7 +74,7 @@ beforeEach(async () => {
 });
 ```
 
-Or set port
+### Or set port
 
 ```js
 beforeEach(async () => {
@@ -82,20 +82,20 @@ beforeEach(async () => {
 });
 ```
 
-The manager is in the global scope
+### The manager is in the global scope
 
 ```js
 const manager = new Manager();
 ```
 
-Create new Manager object
+### Create new Manager object
 
 ```js
 beforeEach(async () => {
     manager = new Manager();
 ```
 
-Create client(default `['net.ton.dev']`)
+### Create client(default `['net.ton.dev']`)
 
 Signature
 
@@ -105,13 +105,13 @@ Signature
 await manager.CreateClient(['http://localhost:8080/graphql']);
 ```
 
-Create Keys for client
+### Create Keys for client
 
 ```js
 await manager.createKeys();
 ```
 
-or SET Keys
+### or SET Keys
 
 Signature
 
@@ -121,13 +121,13 @@ Signature
 await manager.setKeys('public', 'secret');
 ```
 
-Generate keys
+### Generate keys
 
 ```js
 let keys = await manager.createKeysAndReturn();
 ```
 
-Load contract
+### Load contract
 
 Signature
 
@@ -146,13 +146,13 @@ manager.loadContract(
 );
 ```
 
-Referring to the contract
+### Referring to the contract
 
 ```js
 manager.contracts['Contract_name']; // Taken from the name of the tvc file without extension
 ```
 
-Deploy contract
+### Deploy contract
 
 Signature
 
@@ -163,7 +163,7 @@ await manager.contracts['15_MessageReceiver'].DeployContract();
 await manager.contracts['15_MessageSender'].DeployContract();
 ```
 
-Deploy with parameters
+### Deploy with parameters
 
 ```js
 await manager.contracts['9_PiggyBank'].DeployContract({
@@ -172,13 +172,13 @@ await manager.contracts['9_PiggyBank'].DeployContract({
 });
 ```
 
-Or use custom keys
+### Or use custom keys
 
 ```js
 await manager.contracts['9_PiggyBank'].DeployContract({}, keys);
 ```
 
-Add contract from address
+### Add contract from address
 
 Signature
 
@@ -193,7 +193,7 @@ await manager.AddContractFromAddress(
 );
 ```
 
-Run contract
+### Run contract
 
 Signature
 
@@ -205,7 +205,7 @@ await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
 });
 ```
 
-Run contract(no sign)
+### Run contract(no sign)
 
 ```js
 await manager.contracts['15_MessageSender'].RunContract(
@@ -217,7 +217,7 @@ await manager.contracts['15_MessageSender'].RunContract(
 );
 ```
 
-Use Giver
+### Use Giver
 
 Signature
 
@@ -227,7 +227,7 @@ Signature
 manager.GiveToAddress(manager.contracts['15_MessageReceiver'].address); // give 1000000000000000 gram
 ```
 
-Contract fields
+### Contract fields
 
 ```js
 manager.contracts['15_MessageSender'].address; // Contract address
@@ -240,7 +240,7 @@ manager.contracts['15_MessageSender'].contractPackage; //{ abi,imageBase64 }
 
 ## [Wallet Contract](https://github.com/tonlabs/samples/blob/master/solidity/10_Wallet.sol)
 
-Create Wallet object()
+### Create Wallet object()
 
 Signature
 
@@ -250,19 +250,20 @@ Signature
 let wallet = await manager.createWallet();
 ```
 
-or set keys
+### or set keys
 
 ```js
 let wallet = await manager.createWallet(keys);
 ```
 
-Deploy wallet
+### Deploy wallet
 
 ```js
 await wallet.Deploy();
 ```
 
-SendTransaction
+### SendTransaction
+
 Signature
 
 `async sendTransaction(dest: string, value: number, bounce: boolean)`
@@ -275,7 +276,7 @@ await Wallet.sendTransaction(
 );
 ```
 
-Wallet fields
+### Wallet fields
 
 ```js
 wallet.address; // wallet address
