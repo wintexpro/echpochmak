@@ -70,8 +70,8 @@ export default class Manager {
     };
   }
 
-  public async GiveToAddress(address) {
-    await GiveGrams(this.client, address);
+  public async GiveToAddress(address, amount?: number) {
+    await GiveGrams(this.client, address, amount);
   }
 
   public loadContract(
@@ -134,6 +134,7 @@ export default class Manager {
     }
 
     contract.isDeployed = _contract.length > 0 ? true : false;
+    if (!contract.isDeployed) throw new Error('Contract not deployed');
     this.contracts[contractName] = contract;
   }
 }

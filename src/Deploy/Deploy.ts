@@ -21,7 +21,7 @@ export const Deploy = async (
   return deployMessage.address;
 };
 
-export const GiveGrams = async (client, address) => {
+export const GiveGrams = async (client, address, amount?) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore currently unused local ignore
   const { contracts, queries } = client;
@@ -31,7 +31,7 @@ export const GiveGrams = async (client, address) => {
     abi: giverAbi,
     input: {
       dest: address,
-      amount: 1000000000000000,
+      amount: amount || 1000000000000000,
     },
     keyPair: null,
   });
