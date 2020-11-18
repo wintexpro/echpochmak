@@ -3,7 +3,7 @@ describe('Asserts', () => {
   beforeEach(async () => {
     await restart(8080);
     manager = new Manager();
-    await manager.CreateClient(['http://localhost:8080/graphql']);
+    await manager.createClient(['http://localhost:8080/graphql']);
     await manager.createKeys();
     manager.loadContract(
       './tests/contract/15_MessageReceiver.tvc', // tvc
@@ -14,15 +14,15 @@ describe('Asserts', () => {
       './tests/contract/15_MessageSender.abi.json' // Name
     );
 
-    await manager.contracts['15_MessageReceiver'].DeployContract();
-    await manager.contracts['15_MessageSender'].DeployContract();
+    await manager.contracts['15_MessageReceiver'].deployContract();
+    await manager.contracts['15_MessageSender'].deployContract();
   });
 
   it('test one', async () => {
-    await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
+    await manager.contracts['15_MessageSender'].runContract('sendMessage', {
       anotherContract: manager.contracts['15_MessageReceiver'].address,
     });
-    let res = await manager.contracts['15_MessageReceiver'].RunContract(
+    let res = await manager.contracts['15_MessageReceiver'].runContract(
       'getCounter',
       {}
     );

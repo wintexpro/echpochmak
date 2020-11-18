@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { join } from 'path';
-import { Deploy } from '../Deploy/Deploy';
+import { deploy } from '../Deploy/Deploy';
 export class Wallet {
   public address: string;
   public isDeployed: boolean;
@@ -11,7 +11,7 @@ export class Wallet {
 
   public async Deploy(keys?) {
     try {
-      this.address = await Deploy(
+      this.address = await deploy(
         this.client,
         this.contractPackage,
         keys || this.keys,
@@ -42,7 +42,7 @@ export class Wallet {
     }
   }
 
-  public async CreateWallet(client, keys) {
+  public async createWallet(client, keys) {
     if (this.isDeployed) {
       throw new Error('Wallet already created');
     }

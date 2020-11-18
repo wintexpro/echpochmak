@@ -1,7 +1,7 @@
 import { TONClient } from 'ton-client-node-js';
 import { Contract } from '../Contract/Contract';
 import { resolve, parse } from 'path';
-import { GiveGrams } from '../Deploy/Deploy';
+import { giveGrams } from '../Deploy/Deploy';
 import { Wallet } from '../Contract/Wallet';
 export default class Manager {
   public client: any;
@@ -9,7 +9,7 @@ export default class Manager {
   public keys: any;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
-  public async CreateClient(servers: string[] = ['net.ton.dev']) {
+  public async createClient(servers: string[] = ['net.ton.dev']) {
     this.client = await new Promise(async function (resolve) {
       while (true) {
         await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -70,8 +70,8 @@ export default class Manager {
     };
   }
 
-  public async GiveToAddress(address, amount?: number) {
-    await GiveGrams(this.client, address, amount);
+  public async giveToAddress(address, amount?: number) {
+    await giveGrams(this.client, address, amount);
   }
 
   public loadContract(
@@ -97,11 +97,11 @@ export default class Manager {
 
   public async createWallet(keys?): Promise<Wallet> {
     const wallet = new Wallet();
-    wallet.CreateWallet(this.client, keys || this.keys);
+    wallet.createWallet(this.client, keys || this.keys);
     return wallet;
   }
 
-  public async AddContractFromAddress(
+  public async addContractFromAddress(
     address: string,
     abiPath: string,
     contractName: string,

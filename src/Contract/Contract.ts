@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
-import { Deploy } from '../Deploy/Deploy';
+import { deploy } from '../Deploy/Deploy';
 
 export class Contract {
   public contractPackage: any;
@@ -31,8 +31,8 @@ export class Contract {
     this.client = client;
     this.keys = keys;
   }
-  public async DeployContract(constructorParams = {}, giveGram = true, keys?) {
-    this.address = await Deploy(
+  public async deployContract(constructorParams = {}, giveGram = true, keys?) {
+    this.address = await deploy(
       this.client,
       this.contractPackage,
       keys || this.keys,
@@ -41,7 +41,7 @@ export class Contract {
     );
     this.isDeployed = true;
   }
-  public async RunContract(functionName, input, keyPair?) {
+  public async runContract(functionName, input, keyPair?) {
     if (!this.isDeployed) {
       throw new Error('Contract not deployed');
     }

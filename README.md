@@ -99,10 +99,10 @@ beforeEach(async () => {
 
 Signature
 
-`async CreateClient(servers: string[] = ['net.ton.dev'])`
+`async createClient(servers: string[] = ['net.ton.dev'])`
 
 ```js
-await manager.CreateClient(['http://localhost:8080/graphql']);
+await manager.createClient(['http://localhost:8080/graphql']);
 ```
 
 ### Create Keys for client
@@ -156,17 +156,17 @@ manager.contracts['Contract_name']; // Taken from the name of the tvc file witho
 
 Signature
 
-`async DeployContract(constructorParams = {}, giveGram = true, keys?)`
+`async deployContract(constructorParams = {}, giveGram = true, keys?)`
 
 ```js
-await manager.contracts['15_MessageReceiver'].DeployContract();
-await manager.contracts['15_MessageSender'].DeployContract();
+await manager.contracts['15_MessageReceiver'].deployContract();
+await manager.contracts['15_MessageSender'].deployContract();
 ```
 
 ### Deploy with parameters
 
 ```js
-await manager.contracts['9_PiggyBank'].DeployContract({
+await manager.contracts['9_PiggyBank'].deployContract({
   own: manager.contracts['9_PiggyBank_Owner'].address,
   lim: 1000000,
 });
@@ -175,17 +175,17 @@ await manager.contracts['9_PiggyBank'].DeployContract({
 ### Or use custom keys
 
 ```js
-await manager.contracts['9_PiggyBank'].DeployContract({}, keys);
+await manager.contracts['9_PiggyBank'].deployContract({}, keys);
 ```
 
 ### Add contract from address
 
 Signature
 
-`async AddContractFromAddress( address: string, abiPath: string, contractName: string, keyPair? )`
+`async addContractFromAddress( address: string, abiPath: string, contractName: string, keyPair? )`
 
 ```js
-await manager.AddContractFromAddress(
+await manager.addContractFromAddress(
   'address',
   'abiPath',
   'contractName',
@@ -197,10 +197,10 @@ await manager.AddContractFromAddress(
 
 Signature
 
-`async RunContract(functionName, input, keyPair?) `
+`async runContract(functionName, input, keyPair?) `
 
 ```js
-await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
+await manager.contracts['15_MessageSender'].runContract('sendMessage', {
   anotherContract: manager.contracts['15_MessageReceiver'].address,
 });
 ```
@@ -208,7 +208,7 @@ await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
 ### Run contract(no sign)
 
 ```js
-await manager.contracts['15_MessageSender'].RunContract(
+await manager.contracts['15_MessageSender'].runContract(
   'sendMessage',
   {
     anotherContract: manager.contracts['15_MessageReceiver'].address,
@@ -221,10 +221,10 @@ await manager.contracts['15_MessageSender'].RunContract(
 
 Signature
 
-`async GiveToAddress(address, amount?: number) `
+`async giveToAddress(address, amount?: number) `
 
 ```js
-manager.GiveToAddress(manager.contracts['15_MessageReceiver'].address); // give 1000000000000000 gram
+manager.giveToAddress(manager.contracts['15_MessageReceiver'].address); // give 1000000000000000 gram
 ```
 
 ### Contract fields
@@ -259,7 +259,7 @@ let wallet = await manager.createWallet(keys);
 ### Deploy wallet
 
 ```js
-await wallet.Deploy();
+await wallet.deploy();
 ```
 
 ### SendTransaction

@@ -1,17 +1,17 @@
 import { giverAbi, giverAddress } from '../Contract/GiverConst';
-export const Deploy = async (
+export const deploy = async (
   client,
   contractPackage: any,
   keys,
   constructorParams: any,
-  giveGrams = true
+  giveGram = true
 ) => {
   const deployMessage = await client.contracts.createDeployMessage({
     package: contractPackage,
     constructorParams: constructorParams,
     keyPair: keys,
   });
-  if (giveGrams) await GiveGrams(client, deployMessage.address);
+  if (giveGram) await giveGrams(client, deployMessage.address);
   const messageProcessingState = await client.contracts.sendMessage(
     deployMessage.message
   );
@@ -22,7 +22,7 @@ export const Deploy = async (
   return deployMessage.address;
 };
 
-export const GiveGrams = async (client, address, amount?) => {
+export const giveGrams = async (client, address, amount?) => {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore currently unused local ignore
   const { contracts, queries } = client;
