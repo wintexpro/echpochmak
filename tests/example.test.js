@@ -1,9 +1,9 @@
 describe('Asserts', () => {
   let manager;
   beforeEach(async () => {
-    //await restart(8080);
+    await restart(8080);
     manager = new Manager();
-    await manager.CreateClient();
+    await manager.CreateClient(['http://localhost:8080/graphql']);
     await manager.createKeys();
     manager.loadContract(
       './tests/contract/15_MessageReceiver.tvc', // tvc
@@ -19,15 +19,13 @@ describe('Asserts', () => {
   });
 
   it('test one', async () => {
-    await manager.AddContractFromAddress(
-      '0:653b9a6452c7a982c6dc92b2da9eba832ade1c467699ebb3b43dca6d77b780dd',
-      './tests/contract/giberAbi.json', // abi
-      'giver'
-    );
-    await manager.contracts['giver'].RunContract('requestGrams', {
-      remoteContractAddress:
-        '0:762a4c23e6a1418d2e411690afbd824538ac6b3cbdb7ab23755590e06e51c34f',
-      value: 100,
+    await manager.contracts['15_MessageSender'].RunContract('sendMessage', {
+      anotherContract: manager.contracts['15_MessageReceiver'].address,
     });
+    let res = await manager.contracts['15_MessageReceiver'].RunContract(
+      'getCounter',
+      {}
+    );
+    assert.equal(res.c, '0x1', 'TEST MESSAGE');
   });
 });
