@@ -74,7 +74,9 @@ beforeEach(async () => {
 });
 ```
 
-### Or set port
+### Or set port (if you use don't default port in tondev-cli)
+
+#### `restart command does not set a port for the container, but only uses it for long polling`
 
 ```js
 beforeEach(async () => {
