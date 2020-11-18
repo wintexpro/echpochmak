@@ -2,7 +2,7 @@
 import { expect, assert } from 'chai';
 import { TONClient } from 'ton-client-node-js';
 import Mocha from 'mocha';
-import _Manager from '../Deploy/CreateManager';
+import _Manager from '../Manager/Manager';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
 export const TestRun = async (config: testConfig) => {
