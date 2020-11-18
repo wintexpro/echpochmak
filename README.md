@@ -107,22 +107,6 @@ Signature
 await manager.createClient(['http://localhost:8080/graphql']);
 ```
 
-### Create Keys for client
-
-```js
-await manager.createKeys();
-```
-
-### or SET Keys
-
-Signature
-
-`setKeys(secret: string, _public: string)`
-
-```js
-await manager.setKeys('public', 'secret');
-```
-
 ### Generate keys
 
 ```js
@@ -133,9 +117,13 @@ let keys = await manager.createKeysAndReturn();
 
 Signature
 
-`public loadContract( contractPath: string, abiPath: string, contractName?: string ) `
+`public loadContract( contractPath: string, abiPath: string, options: loadOptions ) `
 
 ```js
+manager.loadContract(
+  './tests/contract/15_MessageReceiver.tvc', // tvc
+  './tests/contract/15_MessageReceiver.abi.json' // abi
+);
 manager.loadContract(
   './tests/contract/15_MessageReceiver.tvc', // tvc
   './tests/contract/15_MessageReceiver.abi.json' // abi
@@ -144,9 +132,26 @@ manager.loadContract(
 manager.loadContract(
   './tests/contract/15_MessageSender.tvc',
   './tests/contract/15_MessageSender.abi.json',
-  'Sender' // Name
+  { contractName: 'sender ' } // Name
+);
+// Custom keys
+manager.loadContract(
+  './tests/contract/15_MessageSender.tvc',
+  './tests/contract/15_MessageSender.abi.json',
+  { keys: anyKeys } // keys
 );
 ```
+
+loadOption signature
+
+```js
+export interface loadOptions {
+  keys?: any;
+  contractName: string;
+}
+```
+
+---
 
 ### Referring to the contract
 

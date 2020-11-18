@@ -6,7 +6,6 @@ import { Wallet } from '../Contract/Wallet';
 export default class Manager {
   public client: any;
   public contracts = {};
-  public keys: any;
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
   public async createClient(servers: string[] = ['net.ton.dev']) {
@@ -35,10 +34,6 @@ export default class Manager {
     }
   }
 
-  public async createKeys() {
-    this.keys = await this.client.crypto.ed25519Keypair();
-  }
-
   public async findLastBlock(
     chain: number,
     client,
@@ -63,13 +58,6 @@ export default class Manager {
     return await this.client.crypto.ed25519Keypair();
   }
 
-  public setKeys(secret: string, _public: string) {
-    this.keys = {
-      secret,
-      public: _public,
-    };
-  }
-
   public async giveToAddress(address, amount?: number) {
     await giveGrams(this.client, address, amount);
   }
@@ -77,27 +65,24 @@ export default class Manager {
   public loadContract(
     contractPath: string,
     abiPath: string,
-    contractName?: string
+    options: loadOptions
   ) {
-    if (!this.keys) {
-      throw new Error('Keys not created');
-    }
     if (!this.client) {
       throw new Error('Client not created');
     }
     this.contracts[
-      contractName || parse(contractPath).base.split('.')[0]
+      options.contractName || parse(contractPath).base.split('.')[0]
     ] = new Contract(
       resolve(contractPath),
       resolve(abiPath),
       this.client,
-      this.keys
+      options.keys || this.createKeysAndReturn()
     );
   }
 
   public async createWallet(keys?): Promise<Wallet> {
     const wallet = new Wallet();
-    wallet.createWallet(this.client, keys || this.keys);
+    wallet.createWallet(this.client, keys || this.createKeysAndReturn());
     return wallet;
   }
 
@@ -105,11 +90,8 @@ export default class Manager {
     address: string,
     abiPath: string,
     contractName: string,
-    keyPair?
+    keyPair?: any
   ) {
-    if (!this.keys) {
-      throw new Error('Keys not created');
-    }
     if (!this.client) {
       throw new Error('Client not created');
     }
@@ -117,7 +99,7 @@ export default class Manager {
       null,
       resolve(abiPath),
       this.client,
-      keyPair || this.keys,
+      keyPair || this.createKeysAndReturn(),
       true
     );
     contract.address = address;
@@ -137,4 +119,9 @@ export default class Manager {
     if (!contract.isDeployed) throw new Error('Contract not deployed');
     this.contracts[contractName] = contract;
   }
+}
+
+export interface loadOptions {
+  keys?: any;
+  contractName: string;
 }
