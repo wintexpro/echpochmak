@@ -12,7 +12,7 @@ export class Test implements yargs.CommandModule {
         type: 'string',
         default: './test/',
         array: true,
-        required: false,
+        required: true,
         describe: 'Path to test folder',
       })
       .option('b', {
