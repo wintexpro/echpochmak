@@ -123,5 +123,5 @@ export default class Manager {
 
 export interface loadOptions {
   keys?: any;
-  contractName: string;
+  contractName?: string;
 }
