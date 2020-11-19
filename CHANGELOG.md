@@ -10,7 +10,7 @@ All notable changes to this project will be documented in this file.
 - Manager no longer generates and stores keys inside itself
 - loadContract signature
 - Manager helpers
-  -- deployCheck
+  - deployCheck
 - Add runLocal function
 
 ### Remove
