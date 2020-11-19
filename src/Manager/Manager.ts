@@ -62,7 +62,7 @@ export default class Manager {
     await giveGrams(this.client, address, amount);
   }
 
-  public loadContract(
+  public async loadContract(
     contractPath: string,
     abiPath: string,
     options: loadOptions
@@ -70,19 +70,24 @@ export default class Manager {
     if (!this.client) {
       throw new Error('Client not created');
     }
-    this.contracts[
-      options.contractName || parse(contractPath).base.split('.')[0]
-    ] = new Contract(
+    const contract = new Contract(
       resolve(contractPath),
       resolve(abiPath),
       this.client,
-      options.keys || this.createKeysAndReturn()
+      options?.keys || (await this.createKeysAndReturn())
     );
+    contract.address = await contract.futureAddress();
+    this.contracts[
+      options?.contractName || parse(contractPath).base.split('.')[0]
+    ] = contract;
   }
 
   public async createWallet(keys?): Promise<Wallet> {
     const wallet = new Wallet();
-    wallet.createWallet(this.client, keys || this.createKeysAndReturn());
+    wallet.createWallet(
+      this.client,
+      keys || (await this.createKeysAndReturn())
+    );
     return wallet;
   }
 
@@ -99,7 +104,7 @@ export default class Manager {
       null,
       resolve(abiPath),
       this.client,
-      keyPair || this.createKeysAndReturn(),
+      keyPair || (await this.createKeysAndReturn()),
       true
     );
     contract.address = address;

@@ -30,6 +30,7 @@ export class Contract {
     this.contractPackage = { abi, imageBase64 };
     this.client = client;
     this.keys = keys;
+    this.isDeployed = false;
   }
   public async deployContract(constructorParams = {}, giveGram = true, keys?) {
     this.address = await deploy(
@@ -40,6 +41,17 @@ export class Contract {
       giveGram
     );
     this.isDeployed = true;
+  }
+
+  public async futureAddress() {
+    const futureAddress = (
+      await this.client.contracts.getDeployData({
+        abi: this.contractPackage.abi,
+        imageBase64: this.contractPackage.imageBase64,
+        publicKeyHex: this.keys.public,
+      })
+    ).address;
+    return futureAddress;
   }
   public async runContract(functionName, input, keyPair?) {
     if (!this.isDeployed) {
