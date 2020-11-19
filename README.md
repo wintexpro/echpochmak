@@ -117,29 +117,35 @@ let keys = await manager.createKeysAndReturn();
 
 Signature
 
-`public loadContract( contractPath: string, abiPath: string, options: loadOptions ) `
+`public async loadContract( contractPath: string, abiPath: string, options: loadOptions ) `
 
 ```js
-manager.loadContract(
+await manager.loadContract(
   './tests/contract/15_MessageReceiver.tvc', // tvc
   './tests/contract/15_MessageReceiver.abi.json' // abi
 );
-manager.loadContract(
+await manager.loadContract(
   './tests/contract/15_MessageReceiver.tvc', // tvc
   './tests/contract/15_MessageReceiver.abi.json' // abi
 );
 // Custom name
-manager.loadContract(
+await manager.loadContract(
   './tests/contract/15_MessageSender.tvc',
   './tests/contract/15_MessageSender.abi.json',
   { contractName: 'sender ' } // Name
 );
 // Custom keys
-manager.loadContract(
+await manager.loadContract(
   './tests/contract/15_MessageSender.tvc',
   './tests/contract/15_MessageSender.abi.json',
   { keys: anyKeys } // keys
 );
+```
+
+Get future/current address
+
+```js
+let address = manager.contracts['15_MessageReceiver'].address;
 ```
 
 loadOption signature
