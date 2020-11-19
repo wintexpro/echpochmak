@@ -4,7 +4,7 @@
   "author": {
     "name": "Marat Chiraev"
   },
-  "description": "Echpochmak is a toolchain for developing Decentralized Applications based on Substrate",
+  "description": "Echpochmak is a toolchain for developing Decentralized Applications based on TON",
   "main": "build/main/index.js",
   "type": "commonjs",
   "typings": "build/main/index.d.ts",
