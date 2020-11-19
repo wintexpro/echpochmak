@@ -251,6 +251,25 @@ manager.contracts['15_MessageSender'].contractPackage; //{ abi,imageBase64 }
 
 ---
 
+## Helpers
+
+### Use `helpers` from Manager object
+
+```js
+manager.helpers.<helper>;
+```
+
+### deployCheck
+
+Signature
+`public static async deployCheck(address, client)`
+
+```js
+await manager.helpers.deployCheck(contractAddress, manager.client);
+```
+
+---
+
 ## [Wallet Contract](https://github.com/tonlabs/samples/blob/master/solidity/10_Wallet.sol)
 
 ### Create Wallet object()
