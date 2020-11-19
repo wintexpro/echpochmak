@@ -5,6 +5,7 @@ import Mocha from 'mocha';
 import _Manager from '../Manager/Manager';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
+import { hasChangedValue } from '../Manager/Helpers';
 export const TestRun = async (config: testConfig) => {
   SetTestGlobal(config);
   const mocha = CreateMocha(config);
@@ -17,6 +18,7 @@ export const TestRun = async (config: testConfig) => {
 };
 
 export const SetTestGlobal = (config: testConfig) => {
+  globalThis.hasChangedValue = hasChangedValue;
   globalThis.expect = expect;
   globalThis.verbose = config.verbose;
   globalThis.assert = assert;

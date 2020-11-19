@@ -277,6 +277,38 @@ Signature
 await manager.helpers.deployCheck(contractAddress, manager.client);
 ```
 
+### getAccountBalance
+
+Signature
+`public static async getAccountBalance(address, client)`
+
+```js
+await manager.helpers.getAccountBalance(contractAddress, manager.client);
+```
+
+### balanceHasChanged
+
+Signature
+` public static async balanceHasChanged( address, client, oldValue, type: hasChangedValue )`
+
+```js
+await manager.helpers.balanceHasChanged(
+  contractAddress,
+  manager.client,
+  100000,
+  hasChangedValue.big
+);
+```
+
+hasChangedValue enum
+
+```js
+export enum hasChangedValue {
+  big,
+  small,
+}
+```
+
 ---
 
 ## [Wallet Contract](https://github.com/tonlabs/samples/blob/master/solidity/10_Wallet.sol)

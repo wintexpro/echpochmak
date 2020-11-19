@@ -12,9 +12,16 @@ describe('Asserts', () => {
       './tests/contract/15_MessageSender.tvc',
       './tests/contract/15_MessageSender.abi.json' // Name
     );
+    manager.contracts['15_MessageSender'].deployContract();
   });
 
   it('test one', async () => {
-    console.log(manager.contracts['15_MessageReceiver'].address);
+    const balance = await manager.client.queries.accounts.query(
+      {
+        id: { eq: manager.contracts['15_MessageSender'].address },
+      },
+      'id balance'
+    );
+    console.log(balance);
   });
 });

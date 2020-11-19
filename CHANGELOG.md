@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.0 Nov 20, 2020
+
+### New
+
+- Manager helpers
+  - getAccountBalance
+  - balanceHasChanged
+
 ## 0.0.1 Nov 19, 2020
 
 ### New
