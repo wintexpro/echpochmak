@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - loadContract signature
 - Manager helpers
   -- deployCheck
+- Add runLocal function
 
 ### Remove
 

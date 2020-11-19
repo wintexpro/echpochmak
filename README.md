@@ -226,8 +226,17 @@ await manager.contracts['15_MessageSender'].runContract(
   {
     anotherContract: manager.contracts['15_MessageReceiver'].address,
   },
-  null // HERE, the keys are indicated, if nothing is specified, those inside the contract object are used (see below));
+  null // HERE, the keys are indicated, if nothing is specified, those inside the contract object are used (see below);
 );
+```
+
+### RunLocal contract
+
+Signature
+`async runLocal(functionName, input, keyPair?)`
+
+```js
+await manager.contracts['15_MessageSender'].runLocal('getData', {});
 ```
 
 ### Use Giver

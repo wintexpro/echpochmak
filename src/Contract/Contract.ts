@@ -43,6 +43,23 @@ export class Contract {
     this.isDeployed = true;
   }
 
+  public async runLocal(functionName, input, keyPair?) {
+    if (!this.isDeployed) {
+      throw new Error('Contract not deployed');
+    }
+    if (!keyPair) {
+      keyPair = this.keys;
+    }
+    const response = await this.client.contracts.runLocal({
+      address: this.address,
+      abi: this.contractPackage.abi,
+      functionName,
+      input,
+      keyPair,
+    });
+    return response;
+  }
+
   public async futureAddress() {
     const futureAddress = (
       await this.client.contracts.getDeployData({
