@@ -5,7 +5,6 @@ import Mocha from 'mocha';
 import _Manager from '../Manager/Manager';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
-import { hasChangedValue } from '../Manager/Helpers';
 export const TestRun = async (config: testConfig) => {
   SetTestGlobal(config);
   const mocha = CreateMocha(config);
@@ -18,7 +17,6 @@ export const TestRun = async (config: testConfig) => {
 };
 
 export const SetTestGlobal = (config: testConfig) => {
-  globalThis.hasChangedValue = hasChangedValue;
   globalThis.expect = expect;
   globalThis.verbose = config.verbose;
   globalThis.assert = assert;
@@ -28,7 +26,7 @@ export const SetTestGlobal = (config: testConfig) => {
 
 export const tondevRestart = async (port = 80) => {
   await execAsync('tondev recreate && tondev start');
-  await new Promise(async function (resolve) {
+  await new Promise(async function (resolve): Promise<void> {
     while (true) {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const serv = [`http://localhost:${port}/graphql`];
