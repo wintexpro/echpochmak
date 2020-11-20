@@ -36,6 +36,7 @@ export const tondevRestart = async (port = 80) => {
         const client = await TONClient.create({
           servers: serv,
           log_verbose: globalThis.verbose,
+          err_log_verbose: globalThis.verbose,
         });
         await client.queries.serverInfo.version;
         break;

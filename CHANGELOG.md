@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - Manager helpers
   - getAccountBalance
   - balanceHasChanged
+- err_log_verbose in create client function
 
 ## 0.0.1 Nov 19, 2020
 

@@ -18,6 +18,7 @@ export default class Manager {
           const client = await TONClient.create({
             servers,
             log_verbose: globalThis.verbose,
+            err_log_verbose: globalThis.verbose,
           });
           await client.queries.serverInfo.version;
           resolve(client);
