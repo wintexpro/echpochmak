@@ -1,7 +1,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://gitlab.wintex.pro/ton/environment">
+  <a href="https://github.com/wintexpro/echpochmak">
     <img src="https://i.imgur.com/PLFUcbp.jpg" alt="Logo" width="300" height="300">
   </a>
 
@@ -10,8 +10,8 @@
   <p align="center">
     ⚠️ (Work In Progress)
     <br />
-    <a href="https://gitlab.wintex.pro/ton/environment/-/issues">Report Bug</a> |
-    <a href="https://gitlab.wintex.pro/ton/environment/-/issues">Request Feature</a>
+    <a href="https://github.com/wintexpro/echpochmak/issues">Report Bug</a> |
+    <a href="https://github.com/wintexpro/echpochmak/issues">Request Feature</a>
     <br />
   </p>
 
