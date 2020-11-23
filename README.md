@@ -23,6 +23,47 @@
 
 <!-- GETTING STARTED -->
 
+- [About The Project](#about-the-project)
+- [Getting Started](#getting-started)
+- [Usage](#usage)
+- [Write test](#write-test)
+  - [Restart tondev command](#restart-tondev-command)
+  - [Or set port (if you use don't default port in tondev-cli)](#or-set-port-if-you-use-dont-default-port-in-tondev-cli)
+  - [The manager is in the global scope](#the-manager-is-in-the-global-scope)
+  - [Create new Manager object](#create-new-manager-object)
+  - [Create client](#create-client)
+  - [Generate keys](#generate-keys)
+  - [Load contract](#load-contract)
+  - [Referring to the contract](#referring-to-the-contract)
+  - [Deploy contract](#deploy-contract)
+  - [Deploy with parameters](#deploy-with-parameters)
+  - [Or use custom keys](#or-use-custom-keys)
+  - [Add contract from address](#add-contract-from-address)
+  - [Run contract](#run-contract)
+  - [Run contract(no sign)](#run-contractno-sign)
+  - [RunLocal contract](#runlocal-contract)
+  - [Run contract with message](#run-contract-with-message)
+  - [Use Giver](#use-giver)
+  - [Contract fields](#contract-fields)
+- [Helpers](#helpers)
+  - [Use `helpers` from Manager object](#use-helpers-from-manager-object)
+  - [deployCheck](#deploycheck)
+  - [getAccountBalance](#getaccountbalance)
+  - [balanceHasChanged](#balancehaschanged)
+  - [getRunFees](#getrunfees)
+  - [getDeployFees](#getdeployfees)
+- [Asserts](#asserts)
+  - [assertError](#asserterror)
+- [Wallet Contract](#wallet-contract)
+  - [Create Wallet object()](#create-wallet-object)
+  - [or set keys](#or-set-keys)
+  - [Deploy wallet](#deploy-wallet)
+  - [SendTransaction](#sendtransaction)
+  - [Wallet fields](#wallet-fields)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
 ## Getting Started
 
 1. Install `Echpochmak`
@@ -41,11 +82,11 @@ To run all tests, run:
 ton-env test -p ./tests/example.test.js
 ```
 
-#### Synopsis
+Synopsis
 
 > test [options]
 
-#### Options
+Options
 
 | Option              | Description                 | Default |
 | ------------------- | --------------------------- | ------- |
@@ -97,7 +138,10 @@ beforeEach(async () => {
     manager = new Manager();
 ```
 
-### Create client(default `['net.ton.dev']`)
+### Create client
+
+default
+`['net.ton.dev']`
 
 Signature
 
