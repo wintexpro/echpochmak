@@ -4,7 +4,7 @@ import { resolve, parse } from 'path';
 import { giveGrams } from '../Deploy/Deploy';
 import { Wallet } from '../Contract/Wallet';
 import { Helpers } from './Helpers';
-export default class Manager {
+export class Manager {
   public client: any;
   public contracts = {};
   public helpers = new Helpers();
@@ -68,7 +68,7 @@ export default class Manager {
   public async loadContract(
     contractPath: string,
     abiPath: string,
-    options: loadOptions
+    options?: loadOptions
   ) {
     if (!this.client) {
       throw new Error('Client not created');

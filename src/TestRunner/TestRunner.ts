@@ -2,7 +2,7 @@
 import { expect, assert } from 'chai';
 import { TONClient } from 'ton-client-node-js';
 import Mocha from 'mocha';
-import _Manager from '../Manager/Manager';
+import { Manager } from '../Manager/Manager';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
 import { assertError } from '../Asserts/AssertError';
@@ -21,7 +21,7 @@ export const SetTestGlobal = (config: testConfig) => {
   globalThis.expect = expect;
   globalThis.verbose = config.verbose;
   globalThis.assert = assert;
-  globalThis.Manager = _Manager;
+  globalThis.Manager = Manager;
   globalThis.assertError = assertError;
   globalThis.restart = tondevRestart;
 };

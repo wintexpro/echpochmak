@@ -8,7 +8,7 @@
   "main": "build/main/index.js",
   "type": "commonjs",
   "typings": "build/main/index.d.ts",
-  "repository": "https://github.com/YOUR_GITHUB_USER_NAME/ton-env",
+  "repository": "https://github.com/wintexpro/echpochmak",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -19,11 +19,7 @@
     "fix:lint": "eslint src --ext .ts --fix",
     "ton-env-test": "node --experimental-repl-await --require ts-node/register ./src/cli.ts test -p ./tests/*.test.js",
     "ton-env-test-build": "ton-env test -p ./tests/example.test.js ",
-    "test": "run-s build test:*",
-    "test:lint": "eslint src --ext .ts",
-    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
-    "test:spelling": "cspell \"{README.md,.github/*.md,src/**/*.ts}\"",
-    "test:unit": "nyc --silent ava",
+    "test": "jest ./__tests__",
     "check-cli": "run-s test diff-integration-tests check-integration-tests",
     "check-integration-tests": "run-s check-integration-test:*",
     "diff-integration-tests": "mkdir -p diff && rm -rf diff/test && cp -r test diff/test && rm -rf diff/test/test-*/.git && cd diff && git init --quiet && git add -A && git commit --quiet --no-verify --allow-empty -m 'WIP' && echo '\\n\\nCommitted most recent integration test output in the \"diff\" directory. Review the changes with \"cd diff && git diff HEAD\" or your preferred git diff viewer.'",
@@ -43,7 +39,7 @@
     "prepare-release": "run-s reset-hard test cov:check doc:html version doc:publish"
   },
   "bin": {
-    "ton-env": "/build/main/cli.js"
+    "echpochmak-cli": "/build/main/cli.js"
   },
   "engines": {
     "node": ">=12"
@@ -51,9 +47,11 @@
   "dependencies": {
     "@bitauth/libauth": "^1.17.1",
     "chai": "^4.2.0",
+    "jest": "^26.6.3",
     "mocha": "^8.2.1",
     "ton-client-js": "^0.28.1",
     "ton-client-node-js": "^0.27.0",
+    "ts-jest": "^26.4.4",
     "unirest": "^0.6.0",
     "yargs": "^16.1.0"
   },
