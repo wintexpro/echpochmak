@@ -1,3 +1,8 @@
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -505,3 +510,17 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+
+[wintex-url]: http://wintex.pro/
+[wintex-logo]: https://github.com/wintexpro/assets/blob/master/wintex.png?raw=true
+[contributors-shield]: https://img.shields.io/github/contributors/wintexpro/echpochmak.svg?style=flat-square
+[contributors-url]: https://github.com/hwintexpro/echpochmak/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/wintexpro/echpochmak.svg?style=flat-square
+[forks-url]: https://github.com/halva-suite/halva/network/members
+[stars-shield]: https://img.shields.io/github/stars/wintexpro/echpochmak.svg?style=flat-square
+[stars-url]: https://github.com/halva-suite/halva/stargazers
+[issues-shield]: https://img.shields.io/github/issues/wintexpro/echpochmak.svg?style=flat-square
+[issues-url]: https://github.com/halva-suite/halva/issues
+[license-shield]: https://img.shields.io/github/license/wintexpro/echpochmak.svg?style=flat-square
+[license-url]: https://github.com/wintexpro/echpochmak/blob/master/LICENSE.txt
+[product-screenshot]: images/screenshot.png
