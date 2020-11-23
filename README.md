@@ -79,7 +79,7 @@ Echpochmak is a set of TON-based contracts testing tools. It provides a high-lev
 1. Install `Echpochmak`
 
 ```sh
-npm install -g ./path
+npm install -g echpochmak
 ```
 
 <!-- USAGE EXAMPLES -->
