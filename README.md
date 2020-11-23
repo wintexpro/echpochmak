@@ -28,8 +28,6 @@
 
 Echpochmak is a set of TON-based contracts testing tools. It provides a high-level way to set up your development environment, interact with TON through an external API, and write your test cases. Echpochmak targets to test external components using calls, which allows test TON to be used as a black box.
 
----
-
 ## Content Table
 
 - [About The Project](#about-the-project)
@@ -100,14 +98,14 @@ Synopsis
 
 Options
 
-| Option              | Description                 | Default |
-| ------------------- | --------------------------- | ------- |
-| -p, --path          | Path to test folder         |         |
-| -b, --bail          | Enable bail                 | false   |
-| -v, --verbose       | Wite debug info(No working) | false   |
-| -t, --timeout       | Timeout time for test       | 0       |
-| --version (boolean) | Show version                |         |
-| --help (boolean)    | Show help information       |         |
+| Option              | Description           | Default |
+| ------------------- | --------------------- | ------- |
+| -p, --path          | Path to test folder   |         |
+| -b, --bail          | Enable bail           | false   |
+| -v, --verbose       | Wite debug info       | false   |
+| -t, --timeout       | Timeout time for test | 0       |
+| --version (boolean) | Show version          |         |
+| --help (boolean)    | Show help information |         |
 
 If you need help, use
 
