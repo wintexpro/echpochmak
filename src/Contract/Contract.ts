@@ -43,6 +43,30 @@ export class Contract {
     this.isDeployed = true;
   }
 
+  public async runWithMessage(functionName, input, keyPair?) {
+    if (!this.isDeployed) {
+      throw new Error('Contract not deployed');
+    }
+    if (!keyPair) {
+      keyPair = this.keys;
+    }
+    const runMessage = await this.client.contracts.createRunMessage({
+      address: this.address,
+      abi: this.contractPackage.abi,
+      functionName,
+      input,
+      keyPair,
+    });
+    const messageProcessingState = await this.client.contracts.sendMessage(
+      runMessage.message
+    );
+    const result = await this.client.contracts.waitForRunTransaction(
+      runMessage,
+      messageProcessingState
+    );
+    return result;
+  }
+
   public async runLocal(functionName, input, keyPair?) {
     if (!this.isDeployed) {
       throw new Error('Contract not deployed');

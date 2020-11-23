@@ -309,6 +309,37 @@ export enum hasChangedValue {
 }
 ```
 
+### getRunFees
+
+Signature
+
+` static async getRunFees( contract: Contract, functionName, input, client, keyPair )`
+
+```js
+const fees = await manager.helpers.getRunFees(
+  manager.contracts['15_MessageSender'],
+  'send',
+  manager.client,
+  keys
+);
+```
+
+### getDeployFees
+
+Signature
+
+` static async getDeployFees( contract: Contract, constructorParams, newAccount: boolean, client, keyPair )`
+
+```js
+const fees = await manager.helpers.getDeployFees(
+  manager.contracts['15_MessageSender'],
+  {},
+  true,
+  manager.client,
+  keys
+);
+```
+
 ---
 
 ## Asserts

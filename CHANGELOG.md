@@ -8,6 +8,9 @@ All notable changes to this project will be documented in this file.
 
 - Asserts
   - assertError
+- Manager helpers
+  - getDeployFees
+  - getRunFees
 
 ## 0.1.0 Nov 20, 2020
 

@@ -1,3 +1,5 @@
+import { Contract } from '../Contract/Contract';
+
 export class Helpers {
   public static async deployCheck(address, client) {
     while (true) {
@@ -39,6 +41,38 @@ export class Helpers {
         else throw new Error('The value has grown');
       }
     }
+  }
+
+  public static async getRunFees(
+    contract: Contract,
+    functionName,
+    input,
+    client,
+    keyPair
+  ) {
+    const calcFees = await client.contracts.calcRunFees({
+      address: contract.address,
+      functionName,
+      abi: contract.contractPackage.abi,
+      input,
+      keyPair,
+    });
+    return calcFees;
+  }
+  public static async getDeployFees(
+    contract: Contract,
+    constructorParams,
+    newAccount: boolean,
+    client,
+    keyPair
+  ) {
+    const deployFees = await client.contracts.calcDeployFees({
+      package: contract.contractPackage,
+      constructorParams,
+      keyPair,
+      newAccount,
+    });
+    return deployFees;
   }
 }
 
