@@ -239,6 +239,24 @@ Signature
 await manager.contracts['15_MessageSender'].runLocal('getData', {});
 ```
 
+### Run contract with message
+
+Signature
+
+`public async runWithMessage(functionName, input, keyPair?)`
+
+```js
+const msg = await manager.contracts['15_MessageSender'].runContract(
+  'sendMessage',
+  {
+    anotherContract: manager.contracts['15_MessageReceiver'].address,
+  }
+);
+
+console.log(`Tokens were sent. Transaction id is ${msg.transaction.id}`);
+console.log(`Run fees are  ${JSON.stringify(msg.fees, null, 2)}`);
+```
+
 ### Use Giver
 
 Signature
