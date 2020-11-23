@@ -91,7 +91,7 @@ npm install -g ./path
 To run all tests, run:
 
 ```sh
-ton-env test -p ./tests/example.test.js
+echpochmak-cli test -p ./tests/example.test.js
 ```
 
 Synopsis
