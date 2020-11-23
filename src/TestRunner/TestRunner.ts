@@ -5,6 +5,7 @@ import Mocha from 'mocha';
 import _Manager from '../Manager/Manager';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
+import { assertError } from '../Asserts/AssertError';
 export const TestRun = async (config: testConfig) => {
   SetTestGlobal(config);
   const mocha = CreateMocha(config);
@@ -21,6 +22,7 @@ export const SetTestGlobal = (config: testConfig) => {
   globalThis.verbose = config.verbose;
   globalThis.assert = assert;
   globalThis.Manager = _Manager;
+  globalThis.assertError = assertError;
   globalThis.restart = tondevRestart;
 };
 

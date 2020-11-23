@@ -311,6 +311,27 @@ export enum hasChangedValue {
 
 ---
 
+## Asserts
+
+### assertError
+
+Signature
+`assertError = async (asyncFn: any, code: number, message?)`
+
+Example
+
+```js
+await assertError(
+  async () => {
+    await manager.contracts['9_PiggyBank'].runContract('getData', {});
+  },
+  3025,
+  'getData'
+);
+```
+
+---
+
 ## [Wallet Contract](https://github.com/tonlabs/samples/blob/master/solidity/10_Wallet.sol)
 
 ### Create Wallet object()

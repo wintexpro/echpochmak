@@ -5,23 +5,42 @@ describe('Asserts', () => {
     manager = new Manager();
     await manager.createClient(['http://localhost:8080/graphql']);
     await manager.loadContract(
-      './tests/contract/15_MessageReceiver.tvc', // tvc
-      './tests/contract/15_MessageReceiver.abi.json' // abi
+      './tests/contract/InitParams.tvc',
+      './tests/contract/InitParams.abi.json'
     );
     await manager.loadContract(
-      './tests/contract/15_MessageSender.tvc',
-      './tests/contract/15_MessageSender.abi.json' // Name
+      './tests/contract/9_PiggyBank.tvc',
+      './tests/contract/9_PiggyBank.abi.json'
     );
-    manager.contracts['15_MessageSender'].deployContract();
+    await manager.loadContract(
+      './tests/contract/9_PiggyBank_Owner.tvc',
+      './tests/contract/9_PiggyBank_Owner.abi.json'
+    );
+    await manager.loadContract(
+      './tests/contract/9_PiggyBank_Stranger.tvc',
+      './tests/contract/9_PiggyBank_Stranger.abi.json'
+    );
+    await manager.contracts['9_PiggyBank_Owner'].deployContract();
+    await manager.contracts['9_PiggyBank_Stranger'].deployContract();
+    await manager.contracts['9_PiggyBank'].deployContract({
+      own: manager.contracts['9_PiggyBank_Owner'].address,
+      lim: 1000000,
+    });
   });
 
   it('test one', async () => {
-    const balance = await manager.client.queries.accounts.query(
-      {
-        id: { eq: manager.contracts['15_MessageSender'].address },
+    await manager.contracts['9_PiggyBank_Owner'].runContract('addToDeposit', {
+      bankAddress: manager.contracts['9_PiggyBank'].address,
+      amount: 100000,
+    });
+    console.log('AddDeposit 1000');
+    manager.giveToAddress(manager.contracts['9_PiggyBank'].address);
+    await assertError(
+      async () => {
+        await manager.contracts['9_PiggyBank'].runContract('getData', {});
       },
-      'id balance'
+      3025,
+      'getData'
     );
-    console.log(balance);
   });
 });
