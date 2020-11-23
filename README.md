@@ -3,6 +3,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
@@ -21,14 +22,18 @@
   </p>
 
 </p>
-
 <!-- ABOUT THE PROJECT -->
 
 ## About The Project
 
-<!-- GETTING STARTED -->
+Echpochmak is a set of TON-based contracts testing tools. It provides a high-level way to set up your development environment, interact with TON through an external API, and write your test cases. Echpochmak targets to test external components using calls, which allows test TON to be used as a black box.
+
+---
+
+## Content Table
 
 - [About The Project](#about-the-project)
+- [Content Table](#content-table)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Write test](#write-test)
@@ -68,6 +73,8 @@
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
+
+<!-- GETTING STARTED -->
 
 ## Getting Started
 
