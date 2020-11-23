@@ -316,6 +316,7 @@ export enum hasChangedValue {
 ### assertError
 
 Signature
+
 `assertError = async (asyncFn: any, code: number, message?)`
 
 Example
