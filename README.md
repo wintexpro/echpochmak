@@ -209,7 +209,7 @@ loadOption signature
 ```js
 export interface loadOptions {
   keys?: any;
-  contractName: string;
+  contractName?: string;
 }
 ```
 
@@ -471,7 +471,7 @@ Signature
 `async sendTransaction(dest: string, value: number, bounce: boolean)`
 
 ```js
-await Wallet.sendTransaction(
+await wallet.sendTransaction(
   (dest: string),
   (value: number),
   (bounce: boolean)
