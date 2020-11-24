@@ -26,7 +26,7 @@
 
 ## About The Project
 
-Echpochmak is a set of TON-based contracts testing tools. It provides a high-level way to set up your development environment, interact with TON through an external API, and write your test cases. Echpochmak targets to test external components using calls, which allows test TON to be used as a black box.
+Echpochmak is a set of TON-based contracts testing tools. It provides a high-level way to set up your development environment, interact with TON through an external API, and write your integration and e2e test cases. Echpochmak targets to test external components using calls, which allows test TON to be used as a black box.
 
 ## Content Table
 
@@ -110,12 +110,14 @@ Options
 If you need help, use
 
 ```sh
-ton-env --help
+echpochmak-cli --help
 ```
 
 ---
 
 ## Write test
+
+### Tests are written using Mocha
 
 ### Restart tondev command
 
@@ -300,7 +302,7 @@ Signature
 `public async runWithMessage(functionName, input, keyPair?)`
 
 ```js
-const msg = await manager.contracts['15_MessageSender'].runContract(
+const msg = await manager.contracts['15_MessageSender'].runWithMessage(
   'sendMessage',
   {
     anotherContract: manager.contracts['15_MessageReceiver'].address,
@@ -437,6 +439,8 @@ await assertError(
 ---
 
 ## [Wallet Contract](https://github.com/tonlabs/samples/blob/master/solidity/10_Wallet.sol)
+
+A simple wallet contract, you may find it useful when testing fallback functions
 
 ### Create Wallet object()
 
