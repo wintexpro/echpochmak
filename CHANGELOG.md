@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file.
 ### New
 
 - Add custom reporter
-  - Add error description in output
+  - Added the output of the description of the error
 
 ### Fix
 
