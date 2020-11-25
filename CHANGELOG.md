@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.3 Nov 25, 2020
+
+### New
+
+- Add custom reporter
+  - Add error description in output
+
+### Fix
+
+- Fix --path required
+- Fix test example
+
 ## 0.1.1 Nov 23, 2020
 
 ### New

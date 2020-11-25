@@ -1,7 +1,7 @@
 describe('Asserts', () => {
   let manager;
   beforeEach(async () => {
-    await restart(8080);
+    await restart();
     manager = new Manager();
     await manager.createClient(['http://localhost:8080/graphql']);
     await manager.loadContract(
@@ -33,7 +33,6 @@ describe('Asserts', () => {
       bankAddress: manager.contracts['9_PiggyBank'].address,
       amount: 100000,
     });
-    console.log('AddDeposit 1000');
     manager.giveToAddress(manager.contracts['9_PiggyBank'].address);
     await assertError(
       async () => {

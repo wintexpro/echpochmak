@@ -5,6 +5,7 @@ import Mocha from 'mocha';
 import { Manager } from '../Manager/Manager';
 import { testConfig } from '../config/config';
 import { exec } from 'shelljs';
+import { join } from 'path';
 import { assertError } from '../Asserts/AssertError';
 export const TestRun = async (config: testConfig) => {
   SetTestGlobal(config);
@@ -12,9 +13,13 @@ export const TestRun = async (config: testConfig) => {
   config.testingFiles.forEach((file) => {
     mocha.addFile(file);
   });
-  mocha.run(function (failures) {
-    process.exit(failures ? 1 : 0);
-  });
+  try {
+    mocha.run(function (failures) {
+      process.exit(failures ? 1 : 0);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export const SetTestGlobal = (config: testConfig) => {
@@ -67,6 +72,7 @@ export const CreateMocha = (config: testConfig): Mocha => {
   if (config.colors != null) {
     mochaConfig.color = config.colors;
   }
+  mochaConfig.reporter = join(__dirname, '../Reporter/EchpochmakReporter.js');
   // Default to true if configuration isn't set anywhere.
   if (mochaConfig.color == null) {
     mochaConfig.color = true;

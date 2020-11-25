@@ -10,7 +10,6 @@ export class Test implements yargs.CommandModule {
       .option('p', {
         alias: 'path',
         type: 'string',
-        default: './test/',
         array: true,
         required: true,
         describe: 'Path to test folder',
