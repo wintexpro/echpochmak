@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.1.3-rc2 Nov 26, 2020
+
+- Manager helpers
+  - hasOnBounced
+  - lastTransaction
+  - lastMessage
+
 ## 0.1.3-rc1 Nov 25, 2020
 
 ### New

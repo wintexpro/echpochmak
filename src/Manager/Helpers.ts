@@ -23,6 +23,51 @@ export class Helpers {
     return parseInt(balance[0].balance, 16);
   }
 
+  public static async hasOnBounced(address, timestamp: number, client) {
+    while (true) {
+      const messages = await client.queries.messages.query(
+        {
+          dst: { eq: address },
+          created_at: { gt: timestamp },
+          bounced: { eq: true },
+        },
+        'dst created_at, bounced'
+      );
+      if (messages.length > 1) {
+        return;
+      }
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  }
+
+  public static async lastTransaction(
+    address,
+    client,
+    fields = 'account_addr, aborted'
+  ) {
+    const transaction = await client.queries.transactions.query(
+      {
+        account_addr: { eq: address },
+      },
+      fields
+    );
+    return transaction.length != 0 ? transaction[0] : null;
+  }
+
+  public static async lastMessage(
+    address,
+    client,
+    fields = 'src, dst, bounce, bounced, value'
+  ) {
+    const messages = await client.queries.messages.query(
+      {
+        src: { eq: address },
+      },
+      fields
+    );
+    return messages.length != 0 ? messages[0] : null;
+  }
+
   public static async balanceHasChanged(
     address,
     client,

@@ -1,6 +1,6 @@
 {
   "name": "echpochmak",
-  "version": "0.1.2-rc1",
+  "version": "0.1.2-rc2",
   "author": {
     "name": "Marat Chiraev"
   },
@@ -10,7 +10,7 @@
   "typings": "build/main/index.d.ts",
   "repository": "https://github.com/wintexpro/echpochmak",
   "license": "MIT",
-  "keywords": [],
+  "keywords": ["TON", "testing", "smart-contracts"],
   "scripts": {
     "build": "run-p build:* && cp -av -R WalletContract build/main && cp -av -R src/Reporter build/main",
     "build:main": "tsc -p tsconfig.json",

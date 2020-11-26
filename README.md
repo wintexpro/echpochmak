@@ -35,6 +35,7 @@ Echpochmak is a set of TON-based contracts testing tools. It provides a high-lev
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Write test](#write-test)
+  - [Tests are written using Mocha](#tests-are-written-using-mocha)
   - [Restart tondev command](#restart-tondev-command)
   - [Or set port (if you use don't default port in tondev-cli)](#or-set-port-if-you-use-dont-default-port-in-tondev-cli)
   - [The manager is in the global scope](#the-manager-is-in-the-global-scope)
@@ -57,6 +58,9 @@ Echpochmak is a set of TON-based contracts testing tools. It provides a high-lev
   - [Use `helpers` from Manager object](#use-helpers-from-manager-object)
   - [deployCheck](#deploycheck)
   - [getAccountBalance](#getaccountbalance)
+  - [hasOnBounced](#hasonbounced)
+  - [lastTransaction](#lasttransaction)
+  - [lastMessage](#lastmessage)
   - [balanceHasChanged](#balancehaschanged)
   - [getRunFees](#getrunfees)
   - [getDeployFees](#getdeployfees)
@@ -358,6 +362,35 @@ Signature
 
 ```js
 await manager.helpers.getAccountBalance(contractAddress, manager.client);
+```
+
+### hasOnBounced
+
+Signature
+` public static async hasOnBounced(address, timestamp: number, client)`
+
+`timestamp` - The time when the transaction preceding OnBounced was made, guarantees the assistant will wait for the last message OnBounced
+
+```js
+await manager.helpers.hasOnBounced(contractAddress, manager.client);
+```
+
+### lastTransaction
+
+Signature
+`public static async lastMessage( address, client, fields = 'src, dst, bounce, bounced, value' )`
+
+```js
+let tx = await manager.helpers.lastTransaction(contractAddress, manager.client);
+```
+
+### lastMessage
+
+Signature
+`public static async lastMessage( address, client, fields = 'src, dst, bounce, bounced, value' )`
+
+```js
+let msg = await manager.helpers.lastMessage(contractAddress, manager.client);
 ```
 
 ### balanceHasChanged
