@@ -41,5 +41,7 @@ describe('Asserts', () => {
       3025,
       'getData'
     );
+    const res = await manager.contracts['9_PiggyBank'].runLocal('getData', {});
+    console.log(res);
   });
 });
