@@ -8,7 +8,7 @@ All notable changes to this project will be documented in this file.
 
 - Fix example tests
 
-## Update
+### Update
 
 - Update license MIT -> Apache
 
