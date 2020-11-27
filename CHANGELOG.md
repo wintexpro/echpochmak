@@ -8,6 +8,10 @@ All notable changes to this project will be documented in this file.
 
 - Fix example tests
 
+## Update
+
+- Update license MIT -> Apache
+
 ## 0.1.3-rc2 Nov 26, 2020
 
 ### New
