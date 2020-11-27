@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.2.0 Nov 27, 2020
+## 0.2.1 Nov 27, 2020
 
 ### Fix
 
