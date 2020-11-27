@@ -1,3 +1,4 @@
+[![npm](https://img.shields.io/npm/v/echpochmak.svg)](https://www.npmjs.com/package/echpochmak)
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
