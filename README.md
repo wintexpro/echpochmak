@@ -27,7 +27,9 @@
 
 ## About The Project
 
-Echpochmak is a set of TON-based contracts testing tools. It provides a high-level way to set up your development environment, interact with TON through an external API, and write your integration and e2e test cases. Echpochmak targets to test external components using calls, which allows test TON to be used as a black box.
+Echpochmak, is a framework based on TONOS Client Library for TON DApp development
+
+It provides some high-level interfaces to interact with your TON smart-contracts, allowing you to write integration and e2e tests.
 
 ## Content Table
 
