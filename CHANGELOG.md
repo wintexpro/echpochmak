@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.0 Nov 27, 2020
+
+### Fix
+
+- Fix example tests
+
 ## 0.1.3-rc2 Nov 26, 2020
 
 ### New
