@@ -559,11 +559,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 [contributors-shield]: https://img.shields.io/github/contributors/wintexpro/echpochmak.svg?style=flat-square
 [contributors-url]: https://github.com/hwintexpro/echpochmak/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/wintexpro/echpochmak.svg?style=flat-square
-[forks-url]: https://github.com/halva-suite/halva/network/members
+[forks-url]: https://github.com/wintexpro/echpochmak/network/members
 [stars-shield]: https://img.shields.io/github/stars/wintexpro/echpochmak.svg?style=flat-square
-[stars-url]: https://github.com/halva-suite/halva/stargazers
+[stars-url]: https://github.com/wintexpro/echpochmak/stargazers
 [issues-shield]: https://img.shields.io/github/issues/wintexpro/echpochmak.svg?style=flat-square
-[issues-url]: https://github.com/halva-suite/halva/issues
+[issues-url]: https://github.com/wintexpro/echpochmak/issues
 [license-shield]: https://img.shields.io/github/license/wintexpro/echpochmak.svg?style=flat-square
 [license-url]: https://github.com/wintexpro/echpochmak/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
