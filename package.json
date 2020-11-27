@@ -9,7 +9,7 @@
   "type": "commonjs",
   "typings": "build/main/index.d.ts",
   "repository": "https://github.com/wintexpro/echpochmak",
-  "license": "MIT",
+  "license": "Apache",
   "keywords": [],
   "scripts": {
     "build": "run-p build:* && cp -av -R WalletContract build/main && cp -av -R src/Reporter build/main",
