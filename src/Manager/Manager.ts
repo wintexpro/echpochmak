@@ -4,6 +4,7 @@ import { resolve, parse } from 'path';
 import { giveGrams } from '../Deploy/Deploy';
 import { Wallet } from '../Contract/Wallet';
 import { Helpers } from './Helpers';
+import { BaseContract } from '../BaseContractObject/BaseContractObject';
 export class Manager {
   public client: any;
   public contracts = {};
@@ -94,6 +95,9 @@ export class Manager {
     return wallet;
   }
 
+  public addCustomContract(contract: BaseContract, contractName: string) {
+    this.contracts[contractName] = contract;
+  }
   public async addContractFromAddress(
     address: string,
     abiPath: string,

@@ -181,9 +181,14 @@
         "signature": "7a77b68e18c47403e1c88d2e3be08afad4a231cbeb11f1bd4687f376e85aff29",
         "affectsGlobalScope": false
       },
+      "../src/BaseContractObject/BaseContractObject.ts": {
+        "version": "4d2da27f66b38486cf47e92b4ecc194787c20409d170b3845340e0e0d5df325b",
+        "signature": "6a7b3e8da0c478d4a3d1a29c4ea961e12129b8070bbb502900378c94cd2adeef",
+        "affectsGlobalScope": false
+      },
       "../src/Manager/Manager.ts": {
-        "version": "8021ecd10e7ea9d93c66cb00be578f0033373f8be0cbd1d766b82236cf2cc4f7",
-        "signature": "a5bffe181f01f577b74de57d5255de3cd0e044f745bbec0e0596c51ff0233f40",
+        "version": "c44a839cd3b180eaa291874b4dae1fef972a43b7aefff6ff2d9d50791d611d87",
+        "signature": "02af37bdc85a3941951e653e60363cb5bb33e564bfb1129305a3d964d5a3a0e9",
         "affectsGlobalScope": false
       },
       "../src/Asserts/AssertError.ts": {
@@ -207,8 +212,8 @@
         "affectsGlobalScope": false
       },
       "../src/index.ts": {
-        "version": "9140f2acce87195a28377cb0c079de679eb3ee4aa027f2c69f8a70f5c58231f4",
-        "signature": "9140f2acce87195a28377cb0c079de679eb3ee4aa027f2c69f8a70f5c58231f4",
+        "version": "8e6998f034c7aea67734ccf302a7248b2c0e3e60e81cdefed3e1b6b3b69dd508",
+        "signature": "8e6998f034c7aea67734ccf302a7248b2c0e3e60e81cdefed3e1b6b3b69dd508",
         "affectsGlobalScope": false
       },
       "../node_modules/@types/node/globals.d.ts": {
@@ -650,6 +655,11 @@
       "../node_modules/@types/yargs/index.d.ts": [
         "../node_modules/@types/yargs-parser/index.d.ts"
       ],
+      "../src/BaseContractObject/BaseContractObject.ts": [
+        "../node_modules/@types/node/fs.d.ts",
+        "../node_modules/@types/node/path.d.ts",
+        "../src/Deploy/Deploy.ts"
+      ],
       "../src/Commands/test.ts": [
         "../node_modules/@types/yargs/index.d.ts",
         "../src/TestRunner/TestRunner.ts",
@@ -673,6 +683,7 @@
       ],
       "../src/Manager/Manager.ts": [
         "../node_modules/@types/node/path.d.ts",
+        "../src/BaseContractObject/BaseContractObject.ts",
         "../src/Contract/Contract.ts",
         "../src/Contract/Wallet.ts",
         "../src/Deploy/Deploy.ts",
@@ -695,6 +706,7 @@
         "../node_modules/@types/node/path.d.ts"
       ],
       "../src/index.ts": [
+        "../src/BaseContractObject/BaseContractObject.ts",
         "../src/index.ts"
       ]
     },
@@ -876,6 +888,7 @@
         "../src/Contract/Contract.ts"
       ],
       "../src/Manager/Manager.ts": [
+        "../src/BaseContractObject/BaseContractObject.ts",
         "../src/Contract/Wallet.ts",
         "../src/Manager/Helpers.ts"
       ],
@@ -887,6 +900,7 @@
         "../node_modules/@types/mocha/index.d.ts"
       ],
       "../src/index.ts": [
+        "../src/BaseContractObject/BaseContractObject.ts",
         "../src/index.ts"
       ]
     },
@@ -969,6 +983,7 @@
       "../node_modules/typescript/lib/lib.es5.d.ts",
       "../node_modules/typescript/lib/lib.esnext.intl.d.ts",
       "../src/Asserts/AssertError.ts",
+      "../src/BaseContractObject/BaseContractObject.ts",
       "../src/Commands/test.ts",
       "../src/Contract/Contract.ts",
       "../src/Contract/GiverConst.ts",

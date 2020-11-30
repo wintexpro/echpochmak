@@ -1,5 +1,6 @@
 import { Wallet } from '../Contract/Wallet';
 import { Helpers } from './Helpers';
+import { BaseContract } from '../BaseContractObject/BaseContractObject';
 export declare class Manager {
     client: any;
     contracts: {};
@@ -11,6 +12,7 @@ export declare class Manager {
     giveToAddress(address: any, amount?: number): Promise<void>;
     loadContract(contractPath: string, abiPath: string, options?: loadOptions): Promise<void>;
     createWallet(keys?: any): Promise<Wallet>;
+    addCustomContract(contract: BaseContract, contractName: string): void;
     addContractFromAddress(address: string, abiPath: string, contractName: string, keyPair?: any): Promise<void>;
 }
 export interface loadOptions {
