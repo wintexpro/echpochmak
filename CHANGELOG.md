@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.3 Nov 30, 2020
+
+### Fix
+
+- Fx npm install
+
 ## 0.2.2 Nov 27, 2020
 
 ### Fix
