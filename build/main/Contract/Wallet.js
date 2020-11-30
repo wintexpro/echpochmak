@@ -5,7 +5,7 @@ const fs_1 = require("fs");
 const path_1 = require("path");
 const Deploy_1 = require("../Deploy/Deploy");
 class Wallet {
-    async Deploy(keys) {
+    async deploy(keys) {
         try {
             this.address = await Deploy_1.deploy(this.client, this.contractPackage, keys || this.keys, {});
             this.isDeployed = true;

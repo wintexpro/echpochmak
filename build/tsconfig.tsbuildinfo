@@ -172,8 +172,8 @@
         "affectsGlobalScope": false
       },
       "../src/Contract/Wallet.ts": {
-        "version": "e623b092c7205a6d804eea4d71fa5452f0da344cded81bd9b2a78153ae577661",
-        "signature": "6088e04e067a54d08cbb91580ccd7992dd786c1593a0ad2da579c3948c5cd8b9",
+        "version": "179fd249fe3d115c7957bb153570f38880b1bdc898f3cf9e2a9a2765553fbbb5",
+        "signature": "2aca253cbab988c71d5b9ba02e0677902ecc4b26101d7ebfc44b91fac9c6a688",
         "affectsGlobalScope": false
       },
       "../src/Manager/Helpers.ts": {

@@ -2,11 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.4 Nov 30, 2020
+
+### Fix
+
+- Rename wallet.Deploy -> wallet.deploy
+
 ## 0.2.3 Nov 30, 2020
 
 ### Fix
 
-- Fx npm install
+- Fix npm install
 
 ## 0.2.2 Nov 27, 2020
 
