@@ -7,4 +7,4 @@ class BankContract extends BaseContract {
   }
 }
 
-module.exports = MyContract;
+module.exports = BankContract;
