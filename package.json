@@ -1,18 +1,18 @@
 {
   "name": "echpochmak",
-  "version": "0.2.3",
+  "version": "0.2.10",
   "author": {
     "name": "Marat Chiraev"
   },
   "description": "Echpochmak is a toolchain for developing Decentralized Applications based on TON",
-  "main": "build/main/index.js",
+  "main": "build/index.js",
   "type": "commonjs",
-  "typings": "build/main/index.d.ts",
+  "typings": "build/index.d.ts",
   "repository": "https://github.com/wintexpro/echpochmak",
   "license": "Apache-2.0 License",
   "keywords": [],
   "scripts": {
-    "build": "run-p build:* && cp -av -R WalletContract build/main && cp -av -R src/Reporter build/main",
+    "build": "run-p build:* && cp -av -R WalletContract build/ && cp -av -R src/Reporter build/",
     "build:main": "tsc -p tsconfig.json",
     "fix": "run-s fix:*",
     "fix:prettier": "prettier \"src/**/*.ts\" --write",
@@ -39,7 +39,7 @@
     "prepare-release": "run-s reset-hard test cov:check doc:html version doc:publish"
   },
   "bin": {
-    "echpochmak-cli": "/build/main/cli.js"
+    "echpochmak-cli": "build/cli.js"
   },
   "engines": {
     "node": ">=12"
@@ -85,10 +85,9 @@
     "typescript": "^4.0.2"
   },
   "files": [
-    "build/main",
-    "build/module",
+    "build/",
+    "build/",
     "!**/*.spec.*",
-    "!**/*.json",
     "CHANGELOG.md",
     "LICENSE",
     "README.md"
@@ -98,11 +97,11 @@
     "timeout": "60s",
     "typescript": {
       "rewritePaths": {
-        "src/": "build/main/"
+        "src/": "build//"
       }
     },
     "files": [
-      "!build/module/**"
+      "!build/**"
     ]
   },
   "config": {

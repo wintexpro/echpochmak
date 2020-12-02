@@ -9,7 +9,7 @@ export class Wallet {
   private client: any;
   private keys: any;
 
-  public async Deploy(keys?) {
+  public async deploy(keys?) {
     try {
       this.address = await deploy(
         this.client,

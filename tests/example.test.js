@@ -2,16 +2,9 @@ const MyContract = require('./testContract');
 describe('Asserts', () => {
   let manager;
   beforeEach(async () => {
-    await restart();
+    await restart(8080);
     manager = new Manager();
-    await manager.createClient(['http://localhost:8080/graphql']);
-    const myC = await new MyContract(
-      './tests/contract/9_PiggyBank.tvc',
-      './tests/contract/9_PiggyBank.abi.json',
-      manager.client,
-      await manager.createKeysAndReturn()
-    );
-    manager.addCustomContract(myC, 'gg');
+    await manager.createClient(['http://127.0.0.1:8080/graphql']);
     await manager.loadContract(
       './tests/contract/InitParams.tvc',
       './tests/contract/InitParams.abi.json'

@@ -52,7 +52,7 @@ function Spec(runner, options) {
   }
 
   runner.on(EVENT_RUN_BEGIN, function () {
-    figlet('ECHPOCHMAK 2077', { font: '3-D' }, function (err, data) {
+    figlet('ECHPOCHMAK', { font: '3-D' }, function (err, data) {
       if (err) {
         console.log('Something went wrong...');
         console.dir(err);
