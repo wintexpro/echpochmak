@@ -52,7 +52,7 @@ function Spec(runner, options) {
   }
 
   runner.on(EVENT_RUN_BEGIN, function () {
-    figlet('ECHPOCHMAK 2077', { font: '3-D' }, function (err, data) {
+    figlet('ECHPOCHMAK', { font: '3-D' }, function (err, data) {
       if (err) {
         console.log('Something went wrong...');
         console.dir(err);
@@ -99,10 +99,15 @@ function Spec(runner, options) {
   });
 
   runner.on(EVENT_TEST_FAIL, function (test) {
-    this.test.err.message +=
-      test.err.data.description == undefined
-        ? ``
-        : `\n Description: ${test.err.data.description}`;
+    if (this.test)
+      if (this.test.err)
+        if (this.test.err.message) {
+          this.test.err.message +=
+            test.err.data.description == undefined
+              ? ``
+              : `\n Description: ${test.err.data.description}`;
+        }
+
     Base.consoleLog(indent() + color('fail', '  %d) %s'), ++n, test.title);
   });
 

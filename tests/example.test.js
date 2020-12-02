@@ -22,10 +22,12 @@ describe('Asserts', () => {
     );
     await manager.contracts['9_PiggyBank_Owner'].deployContract();
     await manager.contracts['9_PiggyBank_Stranger'].deployContract();
-    await manager.contracts['9_PiggyBank'].deployContract({
+
+    await manager.contracts['9_PiggyBank'].DeployContract({
       own: manager.contracts['9_PiggyBank_Owner'].address,
       lim: 1000000,
     });
+    s;
   });
 
   it('test one', async () => {
@@ -33,6 +35,7 @@ describe('Asserts', () => {
       bankAddress: manager.contracts['9_PiggyBank'].address,
       amount: 100000,
     });
+    throw new Error('gg');
     manager.giveToAddress(manager.contracts['9_PiggyBank'].address);
     await assertError(
       async () => {
