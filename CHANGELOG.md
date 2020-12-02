@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.2.9 Nov 30, 2020
+
+### Fix
+
+- Add wallet.abi.json file in build
+
 ## 0.2.4 Nov 30, 2020
 
 ### Fix
