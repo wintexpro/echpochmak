@@ -1,4 +1,4 @@
-const MyContract = require('./testContract');
+const MyContract = require('./CustomObject.example');
 describe('Asserts', () => {
   let manager;
   beforeEach(async () => {

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const BaseContract = require('../build/main/index').BaseContract;
+const BaseContract = require('echpochmak').BaseContract;
 
 class MyContract extends BaseContract {
   async getData() {
