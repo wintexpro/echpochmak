@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.2.9 Nov 30, 2020
+## 0.2.10 Dec 2, 2020
+
+### Fix
+
+- Now keyPair accepts undefined
+
+## 0.2.9 Dec 1, 2020
 
 ### Fix
 

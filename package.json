@@ -1,6 +1,6 @@
 {
   "name": "echpochmak",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "author": {
     "name": "Marat Chiraev"
   },
@@ -39,7 +39,7 @@
     "prepare-release": "run-s reset-hard test cov:check doc:html version doc:publish"
   },
   "bin": {
-    "echpochmak-cli": "/build/cli.js"
+    "echpochmak-cli": "build/cli.js"
   },
   "engines": {
     "node": ">=12"

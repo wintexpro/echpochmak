@@ -3,7 +3,7 @@ describe('Asserts', () => {
   beforeEach(async () => {
     await restart(8080);
     manager = new Manager();
-    await manager.createClient(['http://localhost:8080/graphql']);
+    await manager.createClient(['http://127.0.0.1:8080/graphql']);
     await manager.loadContract(
       './tests/contract/InitParams.tvc',
       './tests/contract/InitParams.abi.json'
