@@ -13,13 +13,9 @@ export const TestRun = async (config: testConfig) => {
   config.testingFiles.forEach((file) => {
     mocha.addFile(file);
   });
-  try {
-    mocha.run(function (failures) {
-      process.exit(failures ? 1 : 0);
-    });
-  } catch (err) {
-    console.log(err);
-  }
+  mocha.run(function (failures) {
+    process.exit(failures ? 1 : 0);
+  });
 };
 
 export const SetTestGlobal = (config: testConfig) => {

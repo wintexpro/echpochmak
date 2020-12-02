@@ -47,7 +47,7 @@ export class Contract {
     if (!this.isDeployed) {
       throw new Error('Contract not deployed');
     }
-    if (keyPair == undefined) {
+    if (keyPair === undefined) {
       keyPair = this.keys;
     }
     const runMessage = await this.client.contracts.createRunMessage({
@@ -71,7 +71,7 @@ export class Contract {
     if (!this.isDeployed) {
       throw new Error('Contract not deployed');
     }
-    if (keyPair == undefined) {
+    if (keyPair === undefined) {
       keyPair = this.keys;
     }
     const response = await this.client.contracts.runLocal({
@@ -98,7 +98,7 @@ export class Contract {
     if (!this.isDeployed) {
       throw new Error('Contract not deployed');
     }
-    if (keyPair == undefined) {
+    if (keyPair === undefined) {
       keyPair = this.keys;
     }
     const response = await this.client.contracts.run({

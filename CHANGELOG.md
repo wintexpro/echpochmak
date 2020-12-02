@@ -2,7 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
-## 0.2.10 Dec 2, 2020
+## 0.2.13 Dec 2, 2020
+
+### Fix
+
+- `if (test.err.data)`
+
+## 0.2.12 Dec 2, 2020
+
+### Fix
+
+- Fixed a bug when the reporter did not throw an exception to the console
+
+## 0.2.11 Dec 2, 2020
 
 ### Fix
 
