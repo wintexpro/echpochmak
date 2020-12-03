@@ -37,7 +37,6 @@ It provides some high-level interfaces to interact with your TON smart-contracts
 - [Content Table](#content-table)
 - [Getting Started](#getting-started)
 - [Test Examples](#test-examples)
-  - [You can see examples of tests (here)[https://github.com/wintexpro/ecpochmak-test-example]](#you-can-see-examples-of-tests-herehttpsgithubcomwintexproecpochmak-test-example)
 - [Usage](#usage)
 - [Write test](#write-test)
   - [Tests are written using Mocha](#tests-are-written-using-mocha)
@@ -99,7 +98,7 @@ npm install -g echpochmak
 
 ## Test Examples
 
-### You can see examples of tests (here)[https://github.com/wintexpro/ecpochmak-test-example]
+You can see examples of tests (here)[https://github.com/wintexpro/ecpochmak-test-example]
 
 ## Usage
 
