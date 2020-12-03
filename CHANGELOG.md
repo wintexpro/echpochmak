@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.3.1 Dec 3, 2020
+
+### New
+
+- Add types
+
 ## 0.3.0 Dec 3, 2020
 
 ### New
