@@ -75,6 +75,10 @@ It provides some high-level interfaces to interact with your TON smart-contracts
   - [Deploy wallet](#deploy-wallet)
   - [SendTransaction](#sendtransaction)
   - [Wallet fields](#wallet-fields)
+- [Custom Contract Object](#custom-contract-object)
+  - [Create class](#create-class)
+  - [Use in tests](#use-in-tests)
+- [BaseContract class](#basecontract-class)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -529,6 +533,185 @@ wallet.contractPackage; //{ abi,imageBase64 }
 
 ---
 
+## Custom Contract Object
+
+### Create class
+
+`CustomObject.example.js`
+
+```js
+const BaseContract = require('echpochmak').BaseContract; // Import BaseContract class
+
+class BankContract extends BaseContract {
+  async getData() {
+    // new
+    return await this.runLocal('getData', {}); // Using 'contract' object fields
+  }
+}
+
+module.exports = BankContract;
+```
+
+### Use in tests
+
+Import contract object
+
+```js
+const BankContract = require('./CustomObject.example');
+```
+
+Create object (Constructor used from BaseContract class)
+
+```js
+const customBankObject = await new BankContract(
+  './tests/contract/9_PiggyBank.tvc',
+  './tests/contract/9_PiggyBank.abi.json',
+  manager.client,
+  await manager.createKeysAndReturn()
+);
+```
+
+Add object in manager
+
+```js
+manager.addCustomContract(customBankObject, 'customBank');
+```
+
+Use custom fields
+
+```js
+const res = await manager.contracts['customBank'].getData();
+```
+
+## BaseContract class
+
+<details>
+  <summary>Spoiler warning</summary>
+  
+  ```javascript
+  /* eslint-disable @typescript-eslint/no-explicit-any */
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { deploy } from '../Deploy/Deploy';
+
+export abstract class BaseContract {
+public contractPackage: any;
+public contractPath: string;
+public isDeployed = false;
+public address: any;
+protected client: any;
+protected keys: any;
+
+constructor(
+contractPath: string,
+abiPath: string,
+client,
+keys: any,
+noPath = false
+) {
+// read contract .tvc file
+let imageBase64 = '';
+if (!noPath) {
+const buff = readFileSync(resolve(contractPath));
+// convert tvc code into base64
+imageBase64 = buff.toString('base64');
+}
+
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const abi = require(resolve(abiPath));
+    this.contractPackage = { abi, imageBase64 };
+    this.client = client;
+    this.keys = keys;
+    this.isDeployed = false;
+
+}
+
+public async deployContract(constructorParams = {}, giveGram = true, keys?) {
+this.address = await deploy(
+this.client,
+this.contractPackage,
+keys || this.keys,
+constructorParams,
+giveGram
+);
+this.isDeployed = true;
+}
+
+public async runWithMessage(functionName, input, keyPair?) {
+if (!this.isDeployed) {
+throw new Error('Contract not deployed');
+}
+if (!keyPair) {
+keyPair = this.keys;
+}
+const runMessage = await this.client.contracts.createRunMessage({
+address: this.address,
+abi: this.contractPackage.abi,
+functionName,
+input,
+keyPair,
+});
+const messageProcessingState = await this.client.contracts.sendMessage(
+runMessage.message
+);
+const result = await this.client.contracts.waitForRunTransaction(
+runMessage,
+messageProcessingState
+);
+return result;
+}
+
+public async runLocal(functionName, input, keyPair?) {
+if (!this.isDeployed) {
+throw new Error('Contract not deployed');
+}
+if (!keyPair) {
+keyPair = this.keys;
+}
+const response = await this.client.contracts.runLocal({
+address: this.address,
+abi: this.contractPackage.abi,
+functionName,
+input,
+keyPair,
+});
+return response;
+}
+
+public async futureAddress() {
+const futureAddress = (
+await this.client.contracts.getDeployData({
+abi: this.contractPackage.abi,
+imageBase64: this.contractPackage.imageBase64,
+publicKeyHex: this.keys.public,
+})
+).address;
+return futureAddress;
+}
+public async runContract(functionName, input, keyPair?) {
+if (!this.isDeployed) {
+throw new Error('Contract not deployed');
+}
+if (!keyPair) {
+keyPair = this.keys;
+}
+const response = await this.client.contracts.run({
+address: this.address,
+abi: this.contractPackage.abi,
+functionName: functionName,
+input: input,
+keyPair: keyPair, //there is no pubkey key check in the contract so we can leave it empty
+});
+return response.output;
+}
+}
+
+```
+
+</details>
+
+---
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -550,7 +733,7 @@ Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 ## Contact
 
 <a href="http://wintex.pro/" target="_blank">
-  <img src="https://github.com/halva-suite/assets/blob/master/wintex.png?raw=true" width="200" />
+<img src="https://github.com/halva-suite/assets/blob/master/wintex.png?raw=true" width="200" />
 </a>
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -569,3 +752,4 @@ Distributed under the Apache 2.0 License. See `LICENSE` for more information.
 [license-shield]: https://img.shields.io/github/license/wintexpro/echpochmak.svg?style=flat-square
 [license-url]: https://github.com/wintexpro/echpochmak/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
+```
