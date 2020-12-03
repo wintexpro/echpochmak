@@ -98,7 +98,7 @@ npm install -g echpochmak
 
 ## Test Examples
 
-You can see examples of tests (here)[https://github.com/wintexpro/ecpochmak-test-example]
+You can see examples of tests [here](https://github.com/wintexpro/ecpochmak-test-example)
 
 ## Usage
 
