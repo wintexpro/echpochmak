@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.3.2 Dec 3, 2020
+
+### Fix
+
+- Add types from contracts array in Manager object
+
 ## 0.3.1 Dec 3, 2020
 
 ### New

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TONClient } from 'ton-client-node-js';
 import { Contract } from '../Contract/Contract';
 import { resolve, parse } from 'path';
@@ -5,9 +6,13 @@ import { giveGrams } from '../Deploy/Deploy';
 import { Wallet } from '../Contract/Wallet';
 import { Helpers } from './Helpers';
 import { BaseContract } from '../BaseContractObject/BaseContractObject';
+
+interface ContractMap {
+  [key: string]: BaseContract;
+}
 export class Manager {
   public client: any;
-  public contracts = {};
+  public contracts: ContractMap | any = {};
   public helpers = new Helpers();
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}

@@ -1,9 +1,12 @@
 import { Wallet } from '../Contract/Wallet';
 import { Helpers } from './Helpers';
 import { BaseContract } from '../BaseContractObject/BaseContractObject';
+interface ContractMap {
+    [key: string]: BaseContract;
+}
 export declare class Manager {
     client: any;
-    contracts: {};
+    contracts: ContractMap | any;
     helpers: Helpers;
     constructor();
     createClient(servers?: string[]): Promise<void>;
@@ -19,3 +22,4 @@ export interface loadOptions {
     keys?: any;
     contractName?: string;
 }
+export {};

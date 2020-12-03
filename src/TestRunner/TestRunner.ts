@@ -24,10 +24,10 @@ export const SetTestGlobal = (config: testConfig) => {
   globalThis.assert = assert;
   globalThis.Manager = Manager;
   globalThis.assertError = assertError;
-  globalThis.restart = tondevRestart;
+  globalThis.restart = restart;
 };
 
-export const tondevRestart = async (port = 80) => {
+export const restart = async (port = 80) => {
   await execAsync('tondev recreate && tondev start');
   await new Promise(async function (resolve): Promise<void> {
     while (true) {
