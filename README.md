@@ -78,7 +78,7 @@ It provides some high-level interfaces to interact with your TON smart-contracts
 - [Custom Contract Object](#custom-contract-object)
   - [Create class](#create-class)
   - [Use in tests](#use-in-tests)
-- [BaseContract class](#basecontract-class)
+  - [BaseContract class](#basecontract-class)
 - [Contributing](#contributing)
 - [License](#license)
 - [Contact](#contact)
@@ -583,7 +583,7 @@ Use custom fields
 const res = await manager.contracts['customBank'].getData();
 ```
 
-## BaseContract class
+### [BaseContract](src/BaseContractObject/BaseContractObject.ts) class
 
 <details>
   <summary>Spoiler warning</summary>
