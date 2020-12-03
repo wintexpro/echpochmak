@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.3.0 Dec 3, 2020
+
+### New
+
+- Custom contract Object
+  - BaseObject
+  - Use object in tests
+
 ## 0.2.13 Dec 2, 2020
 
 ### Fix
