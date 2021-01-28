@@ -52,7 +52,6 @@ export abstract class BaseContract {
     giveGram = true,
     keys?
   ) {
-    console.log(constructorHeader);
     this.address = await deploy(
       this.client,
       this.contractPackage,
