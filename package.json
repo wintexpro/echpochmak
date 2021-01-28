@@ -1,9 +1,14 @@
 {
   "name": "echpochmak",
-  "version": "0.3.2",
-  "author": {
-    "name": "Marat Chiraev"
-  },
+  "version": "0.3.3",
+  "contributors": [
+    {
+      "name": "Marat Chiraev"
+    },
+    {
+      "name": "Roman Galkin"
+    }
+  ],
   "description": "Echpochmak is a toolchain for developing Decentralized Applications based on TON",
   "main": "build/index.js",
   "type": "commonjs",

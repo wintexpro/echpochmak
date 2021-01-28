@@ -257,6 +257,20 @@ await manager.contracts['9_PiggyBank'].deployContract({
 });
 ```
 
+### Deploy with custom headers
+
+```js
+await manager.contracts['9_PiggyBank'].deployContractWithCustomHeaders(
+  {
+    own: manager.contracts['9_PiggyBank_Owner'].address,
+    lim: 1000000,
+  },
+  {
+    pubkey: keypair.public,
+    expire: new Date()
+  }
+);
+
 ### Or use custom keys
 
 ```js

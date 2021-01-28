@@ -15,6 +15,7 @@ export class Wallet {
         this.client,
         this.contractPackage,
         keys || this.keys,
+        {},
         {}
       );
       this.isDeployed = true;

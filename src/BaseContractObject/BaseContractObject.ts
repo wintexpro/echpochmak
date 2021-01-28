@@ -40,6 +40,25 @@ export abstract class BaseContract {
       this.contractPackage,
       keys || this.keys,
       constructorParams,
+      {},
+      giveGram
+    );
+    this.isDeployed = true;
+  }
+
+  public async deployContractWithCustomHeaders(
+    constructorParams = {},
+    constructorHeader = {},
+    giveGram = true,
+    keys?
+  ) {
+    console.log(constructorHeader);
+    this.address = await deploy(
+      this.client,
+      this.contractPackage,
+      keys || this.keys,
+      constructorParams,
+      constructorHeader,
       giveGram
     );
     this.isDeployed = true;
