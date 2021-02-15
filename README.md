@@ -257,10 +257,20 @@ await manager.contracts['9_PiggyBank'].deployContract({
 });
 ```
 
-### Deploy with custom headers
+### "Complicated" deploy
+
+This method allows you to provide: constructor parameters, constructor headers and init parameters of your deployable smart contract
 
 ```js
-await manager.contracts['9_PiggyBank'].deployContractWithCustomHeaders(
+await manager.contracts['someName'].complicatedDeploy(
+  constructorParams,
+  constructorHeader,
+  initParams,
+)
+```
+
+```js
+await manager.contracts['9_PiggyBank'].complicatedDeploy(
   {
     own: manager.contracts['9_PiggyBank_Owner'].address,
     lim: 1000000,
@@ -268,6 +278,9 @@ await manager.contracts['9_PiggyBank'].deployContractWithCustomHeaders(
   {
     pubkey: keypair.public,
     expire: new Date()
+  },
+  {
+    randomNonce: '0x' + crypto.createHash('sha256').update(crypto.randomBytes(32)).digest('hex')
   }
 );
 

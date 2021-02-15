@@ -5,13 +5,16 @@ export const deploy = async (
   keys,
   constructorParams: any,
   constructorHeader: any,
+  initParams: any,
   giveGram = true
 ) => {
   const deployMessage = await client.contracts.createDeployMessage({
     package: contractPackage,
     constructorParams: constructorParams,
     constructorHeader: constructorHeader,
+    initParams: initParams,
     keyPair: keys,
+    _randomNonce: true,
   });
   if (giveGram) await giveGrams(client, deployMessage.address);
   const messageProcessingState = await client.contracts.sendMessage(

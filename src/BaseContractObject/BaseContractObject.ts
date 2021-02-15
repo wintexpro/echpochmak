@@ -41,14 +41,16 @@ export abstract class BaseContract {
       keys || this.keys,
       constructorParams,
       {},
+      {},
       giveGram
     );
     this.isDeployed = true;
   }
 
-  public async deployContractWithCustomHeaders(
+  public async complicatedDeploy(
     constructorParams = {},
     constructorHeader = {},
+    initParams = {},
     giveGram = true,
     keys?
   ) {
@@ -58,6 +60,7 @@ export abstract class BaseContract {
       keys || this.keys,
       constructorParams,
       constructorHeader,
+      initParams,
       giveGram
     );
     this.isDeployed = true;
